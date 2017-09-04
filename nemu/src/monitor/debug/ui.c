@@ -81,13 +81,17 @@ static int cmd_help(char *args) {
 
 static int cmd_si_N(char *args) {
   char *arg = strtok(NULL, " ");
-  //int i;
+  int i;
 
   if (arg == NULL) {
     cpu_exec(1);
   }
+  else {
+    i=atoi(arg);
+    printf("%d\t",i);
+    cpu_exec(i);
+  }
 
-  
   return 0;
 }
 
