@@ -7,10 +7,8 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ
-
+  TK_NOTYPE = 256, TK_EQ, TK_NEQ, TK_AND, TK_OR, TK_NOT, TK_NUM, TK_HEX, TK_LP, TK_RP, TK_REG
   /* TODO: Add more token types */
-
 };
 
 static struct rule {
@@ -24,7 +22,20 @@ static struct rule {
 
   {" +", TK_NOTYPE},    // spaces
   {"\\+", '+'},         // plus
-  {"==", TK_EQ}         // equal
+  {"\\-", '-'},         // minus
+  {"\\*", '*'},         // star
+  {"\\/", '/'},         // div
+  {"==", TK_EQ},        // equal
+  {"!=", TK_NEQ},       // not equal
+  {"&&", TK_NEQ},       // and
+  {"||", TK_NEQ} ,      // or
+  {"!", TK_NEQ},        // not
+  {"\\(", TK_LP},       // lp
+  {"\\)", TK_RP},       // rp
+  {"0[xX][0-9a-zA-Z]{1,32}", TK_HEX}, // hex  
+	{"\\$[a-z]{2,3}", TK_REG},   //reg
+	{"[0-9]{1,32}", TK_NUM}, //num
+
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -58,7 +69,7 @@ int nr_token;
 
 static bool make_token(char *e) {
   int position = 0;
-  int i;
+  int i,j;
   regmatch_t pmatch;
 
   nr_token = 0;
@@ -79,10 +90,31 @@ static bool make_token(char *e) {
          * of tokens, some extra actions should be performed.
          */
 
+        tokens[nr_token].type = rules[i].token_type;
         switch (rules[i].token_type) {
-          default: TODO();
+          /*case TK_EQ:
+          case TK_NEQ:
+          case TK_AND:
+          case TK_OR:
+          case TK_NOT: 
+          case TK_NUM:
+          case TK_HEX:
+          case TK_LP:
+          case TK_RP:
+          case TK_REG:
+          case '+':
+          case '-':
+          case '*':
+          case '/':*/
+          case TK_NOTYPE: break;
+          default:
+            tokens[nr_token].type=rules[i].token_type;
+            for(j=0;j<substr_len;j++){
+              tokens[nr_token].str[j]=substr_start[j];
+            }
+            nr_token ++;
         }
-
+        //nr_token ++;
         break;
       }
     }
@@ -96,14 +128,46 @@ static bool make_token(char *e) {
   return true;
 }
 
+static bool eval(int p, int q) {
+  int value;
+  if (p>q) {
+    panic(" Bad expression ");
+    return false;
+  }
+  else if (p==q) {
+    if (tokens[p].type == TK_HEX){
+      sscanf(tokens[p].str,"%x", &value);
+      return value;
+    }
+    else if (tokens[p].type == TK_NUM) {
+      sscanf(tokens[p].str,"%d", &value);
+      return value;
+    }
+    else if (tokens[p].type == TK_REG) {
+      if (!strcmp(tokens[p].str,"$eax")) return cpu.eax;
+			else if (!strcmp(tokens[p].str,"$ecx")) return cpu.ecx;
+			else if (!strcmp(tokens[p].str,"$edx")) return cpu.edx;
+			else if (!strcmp(tokens[p].str,"$ebx")) return cpu.ebx;
+			else if (!strcmp(tokens[p].str,"$esp")) return cpu.esp;
+			else if (!strcmp(tokens[p].str,"$ebp")) return cpu.ebp;
+			else if (!strcmp(tokens[p].str,"$esi")) return cpu.esi; 
+			else if (!strcmp(tokens[p].str,"$edi")) return cpu.edi;
+			else if (!strcmp(tokens[p].str,"$eip")) return cpu.eip;
+			else panic(" Bad expression ");
+    }
+    else {
+      panic(" Bad expression ");
+    }
+  }
+  return 0;
+}
+
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
     *success = false;
     return 0;
   }
-
+  
   /* TODO: Insert codes to evaluate the expression. */
-  TODO();
-
-  return 0;
+  return eval(0, nr_token-1);
 }
