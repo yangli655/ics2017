@@ -50,7 +50,7 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si", "Let the program step by step after the implementation of n instructions to suspend \
+  { "si", "Let the program step by step after the implementation of n instructions to suspend\
   execution, when n is not given, the default is 1", cmd_si },
   { "info", "Print register status or monitor point information", cmd_info },
 
@@ -102,9 +102,9 @@ static int cmd_info(char *args) {
   }
   else {
     if (strcmp(args, "r") == 0) {
-      printf("eax:%08x\tecx:%08x\tedx:%08x\tebx:%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
-      printf("esp:%08x\tebp:%08x\tesi:%08x\tedi:%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
-      printf("eip:%08x\n", cpu.eip);
+      printf("eax:  0x%08x\tecx:  0x%08x\tedx:  0x%08x\tebx:  0x%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
+      printf("esp:  0x%08x\tebp:  0x%08x\tesi:  0x%08x\tedi:  0x%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
+      printf("eip:  0x%08x\n", cpu.eip);
     }
     else if (strcmp(args, "w") == 0) {
       return 0;
