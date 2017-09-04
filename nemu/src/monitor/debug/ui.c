@@ -42,6 +42,14 @@ static int cmd_si(char *args);
 
 static int cmd_info(char *args);
 
+static int cmd_p(char *args);
+
+static int cmd_x(char *args);
+
+static int cmd_w(char *args);
+
+static int cmd_d(char *args);
+
 static struct {
   char *name;
   char *description;
@@ -53,7 +61,11 @@ static struct {
   { "si", "Let the program step by step after the implementation of n instructions to suspend\
   execution, when n is not given, the default is 1", cmd_si },
   { "info", "Print register status or monitor point information", cmd_info },
-
+  { "p", "Find the value of the expression EXPR", cmd_p },
+  { "x", "Find the value of the expression EXPR,the result as a starting memory address, \
+  hexadecimal form of the output of the continuous n 4 bytes", cmd_x },
+  { "w", "When the value of the expression EXPR changes, the program execution is suspended", cmd_w },
+  { "d", "Delete the monitoring point with serial number n", cmd_d },
   /* TODO: Add more commands */
 
 };
@@ -102,9 +114,9 @@ static int cmd_info(char *args) {
   }
   else {
     if (strcmp(args, "r") == 0) {
-      printf("eax:  0x%08x\tecx:  0x%08x\tedx:  0x%08x\tebx:  0x%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
-      printf("esp:  0x%08x\tebp:  0x%08x\tesi:  0x%08x\tedi:  0x%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
-      printf("eip:  0x%08x\n", cpu.eip);
+      printf("eax: 0x%08x\tecx: 0x%08x\tedx: 0x%08x\tebx: 0x%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
+      printf("esp: 0x%08x\tebp: 0x%08x\tesi: 0x%08x\tedi: 0x%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
+      printf("eip: 0x%08x\n", cpu.eip);
     }
     else if (strcmp(args, "w") == 0) {
       return 0;
@@ -113,6 +125,22 @@ static int cmd_info(char *args) {
       printf("Unknown instruction parameters '%s'\n", args);
     }
   }
+  return 0;
+}
+
+static int cmd_p(char *args) {
+  return 0;
+}
+
+static int cmd_x(char *args) {
+  return 0;
+}
+
+static int cmd_w(char *args) {
+  return 0;
+}
+
+static int cmd_d(char *args) {
   return 0;
 }
 
