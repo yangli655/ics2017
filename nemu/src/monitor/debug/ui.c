@@ -38,7 +38,9 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
-static int cmd_si_N(char *args);
+static int cmd_si(char *args);
+
+static int cmd_info(char *args);
 
 static struct {
   char *name;
@@ -48,7 +50,9 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si", "4536", cmd_si_N },
+  { "si", "Let the program step by step after the implementation of n instructions to suspend \
+  execution, when n is not given, the default is 1", cmd_si },
+  { "info", "Print register status or monitor point information", cmd_info },
 
   /* TODO: Add more commands */
 
@@ -79,19 +83,36 @@ static int cmd_help(char *args) {
   return 0;
 }
 
-static int cmd_si_N(char *args) {
-  char *arg = strtok(NULL, " ");
+static int cmd_si(char *args) {
   int i;
-
-  if (arg == NULL) {
+  if (args == NULL) {
     cpu_exec(1);
   }
   else {
-    i=atoi(arg);
-    printf("%d\t",i);
+    i=atoi(args);
     cpu_exec(i);
   }
 
+  return 0;
+}
+
+static int cmd_info(char *args) {
+  if (args == NULL) {
+    printf("Instruction requires parameters\n");
+  }
+  else {
+    if (strcmp(args, "r") == 0) {
+      printf("eax:%08x\tecx:%08x\tedx:%08x\tebx:%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
+      printf("esp:%08x\tebp:%08x\tesi:%08x\tedi:%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
+      printf("eip:%08x\n", cpu.eip);
+    }
+    else if (strcmp(args, "w") == 0) {
+      return 0;
+    }
+    else {
+      printf("Unknown instruction parameters '%s'\n", args);
+    }
+  }
   return 0;
 }
 
