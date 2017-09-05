@@ -152,7 +152,7 @@ static int cmd_x(char *args) {
     if(strlen(EXPR)) {
       int value = expr(EXPR, &flag);
       for(i=0;i<num;i++) {
-        printf("0x%x\t",vaddr_read(value+i*4, 4));
+        printf("0x%08x\t",vaddr_read(value+i*4, 4));
       }
       printf("\n");
     }
