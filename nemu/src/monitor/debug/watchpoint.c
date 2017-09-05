@@ -38,8 +38,8 @@ bool del_wp(char* args) {
   for(;p;p=p->next) {
     if (p->NO == no) {
       free_wp(p);
+      return true;
     }
-    return true;
   }
   return false;
 }

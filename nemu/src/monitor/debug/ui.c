@@ -172,7 +172,7 @@ static int cmd_x(char *args) {
 static int cmd_w(char *args) {
   WP* wp=set_wp(args);
   if (wp) {
-    printf("Set watchpoint No. %d :%s\n",wp->NO,args);
+    printf("Set watchpoint No.%d : %s\n",wp->NO,args);
   }
   else {
     printf("Set watchpoint failed\n");
