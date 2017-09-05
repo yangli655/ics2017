@@ -6,7 +6,7 @@
 
 typedef struct watchpoint {
   char exp[32];
-  int begin,now;
+  int value;
   int NO;
   struct watchpoint *next;
 } WP;
@@ -16,5 +16,6 @@ bool del_wp(char* args);
 WP* new_wp();
 int free_wp(WP* wp);
 int print_wp();
+bool check_wp();
 
 #endif

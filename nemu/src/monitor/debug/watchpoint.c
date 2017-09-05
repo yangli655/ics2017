@@ -33,12 +33,27 @@ int print_wp() {
   return 0;
 }
 
+bool check_wp() {
+  WP* p=head;
+  bool flag,status=false;
+  int now;
+  for (;p;p=p->next) {
+    now=expr(p->exp,&flag);
+    if (flag && now != p->value) {
+      p->value=now;
+      printf("The value of watchpoint No.%d %s changed\n",p->NO,p->exp);
+      status=true; 
+    }
+  }
+  return status;
+}
+
 WP* set_wp(char* args) {
   bool flag;
   int value=expr(args,&flag);
   WP* wp=new_wp();
   if (flag) {
-    wp->begin=value;
+    wp->value=value;
     strcpy(wp->exp,args);
     return wp;
   }
