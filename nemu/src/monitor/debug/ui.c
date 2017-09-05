@@ -131,16 +131,17 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char *args) {
-  //bool flag;
+  bool flag;
   if (args == NULL) {
     printf("Instruction requires expression\n");
     assert(0);
   }
-  /*else {
+  else {
     int value = expr(args, &flag);
+    printf("%s\n",args);
     printf("%d\n", value);
-  }*/
-  printf("%s",args);
+  }
+  
   return 0;
 }
 
