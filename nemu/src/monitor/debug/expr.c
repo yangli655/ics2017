@@ -165,6 +165,10 @@ uint32_t dominant_op(int p, int q) {
 
 static int eval(int p, int q) {
   int value=0,val1=0,val2=0;
+  for(int i=p;i<=q;i++){
+    printf("%s\t",tokens[i].str);
+  }
+  printf("\n");
   if (p>q) {
     panic("Bad expression\n");
     return 0;
