@@ -20,7 +20,7 @@ static struct rule {
   /* TODO: Add more rules.
    * Pay attention to the precedence level of different rules.
    */
-
+   
   {" +", TK_NOTYPE, 0},    // spaces
   {"\\+", '+', 4},         // plus
   {"\\-", '-', 4},         // minus
