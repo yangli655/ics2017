@@ -121,11 +121,12 @@ static bool make_token(char *e) {
             break;
           
           default:
-          tokens[nr_token].priority=rules[i].priority;
+            tokens[nr_token].priority=rules[i].priority;
             tokens[nr_token].type=rules[i].token_type;
             for(j=0;j<substr_len;j++){
               tokens[nr_token].str[j]=substr_start[j];
             }
+            break;
         }
         nr_token++;
         break;
