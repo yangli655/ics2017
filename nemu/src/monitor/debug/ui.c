@@ -138,7 +138,7 @@ static int cmd_p(char *args) {
   }
   else {
     int value = expr(args, &flag);
-    printf("%s\n",args);
+    printf("%s----\n",args);
     printf("%d\n", value);
   }
   
