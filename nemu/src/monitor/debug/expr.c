@@ -28,8 +28,8 @@ static struct rule {
   {"\\/", '/', 3},         // div
   {"==", TK_EQ, 7},        // equal
   {"!=", TK_NEQ, 7},       // not equal
-  {"&&", TK_AND, 11},       // and
-  {"||", TK_OR, 12} ,      // or
+  {"&&", TK_AND, 11},      // and
+  {"||", TK_OR, 12},       // or
   {"!", TK_NOT, 2},        // not
   {"\\(", TK_LP, 1},       // lp
   {"\\)", TK_RP, 1},       // rp
