@@ -212,10 +212,12 @@ static int eval(int p, int q) {
     int op = dominant_op(p, q);
     if (tokens[op].priority == 2){
       val1=eval(p+1,q);
+      printf("111111\n");
     }
     else {
       val1 = eval(p, op - 1);
       val2 = eval(op + 1, q);
+      printf("222222\n");
     }
     int op_type=tokens[op].type;
     printf("op:\t%d\n",op);
