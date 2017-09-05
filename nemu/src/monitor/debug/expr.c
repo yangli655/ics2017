@@ -81,26 +81,13 @@ static bool make_token(char *e) {
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
-        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
-            i, rules[i].regex, position, substr_len, substr_len, substr_start);
+        //Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
         position += substr_len;
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
          * of tokens, some extra actions should be performed.
          */
         switch (rules[i].token_type) {
-          /*case TK_EQ:
-          case TK_NEQ:
-          case TK_AND:
-          case TK_OR:
-          case TK_NOT: 
-          case TK_NUM:
-          case TK_HEX:
-          case TK_LP:
-          case TK_RP:
-          case TK_REG:
-          case '+':
-          case '/':*/
           case TK_NOTYPE: 
             break;
           case '-':
@@ -234,9 +221,9 @@ static int eval(int p, int q) {
       case TK_NEQ: return val1 != val2;
       case TK_AND: return val1 && val2;
       case TK_OR: return val1 || val2;
-      /*case TK_NOT: return !val1;
+      case TK_NOT: return !val1;
       case TK_MIN: return -val1;
-      case TK_ADR: return vaddr_read(val1, 4);*/
+      //case TK_ADR: return vaddr_read(val1, 4);*/
       default: assert(0);
 		}
 	}
