@@ -105,6 +105,7 @@ static bool make_token(char *e) {
             for(j=0;j<substr_len;j++){
               tokens[nr_token].str[j]=substr_start[j];
             }
+            tokens[nr_token].str[j]='\0';
             break;
           case '*':
             //tokens[nr_token].str[0]='*';
@@ -121,6 +122,7 @@ static bool make_token(char *e) {
             for(j=0;j<substr_len;j++){
               tokens[nr_token].str[j]=substr_start[j];
             }
+            tokens[nr_token].str[j]='\0';
             break;
           
           default:
@@ -129,6 +131,7 @@ static bool make_token(char *e) {
             for(j=0;j<substr_len;j++){
               tokens[nr_token].str[j]=substr_start[j];
             }
+            tokens[nr_token].str[j]='\0';
             break;
         }
         nr_token++;
