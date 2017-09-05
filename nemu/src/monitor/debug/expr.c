@@ -173,6 +173,7 @@ uint32_t dominant_op(int p, int q) {
 
 static int eval(int p, int q) {
   int value=0,val1=0,val2=0;
+  printf("$%d %d\n",p,q);
   if (p>q) {
     panic("Bad expression\n");
     return 0;
@@ -184,7 +185,6 @@ static int eval(int p, int q) {
     }
     else if (tokens[p].type == TK_NUM) {
       sscanf(tokens[p].str,"%d", &value);
-      printf("##%d##\n",value);
       return value;
     }
     else if (tokens[p].type == TK_REG) {
