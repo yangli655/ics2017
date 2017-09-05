@@ -92,7 +92,8 @@ static bool make_token(char *e) {
             break;
           case '-':
             tokens[nr_token].str[0]='-';
-            if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM && tokens[nr_token-1].type != TK_REG)) {
+            if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM \
+              && tokens[nr_token-1].type != TK_REG && tokens[nr_token-1].type != TK_RP)) {
               tokens[nr_token].priority=2;
               tokens[nr_token].type=TK_MIN;
             }
@@ -103,7 +104,8 @@ static bool make_token(char *e) {
             break;
           case '*':
             tokens[nr_token].str[0]='*';
-            if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM && tokens[nr_token-1].type != TK_REG)) {
+            if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM \
+              && tokens[nr_token-1].type != TK_REG && tokens[nr_token-1].type != TK_RP)) {
               tokens[nr_token].priority=2;
               tokens[nr_token].type=TK_ADR;
             }
