@@ -99,6 +99,7 @@ static bool make_token(char *e) {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
             }
+            nr_token++;
             break;
           case '*':
             if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM && tokens[nr_token-1].type != TK_REG)) {
@@ -109,17 +110,17 @@ static bool make_token(char *e) {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
             }
+            nr_token++;
             break;
-          
           default:
             tokens[nr_token].priority=rules[i].priority;
             tokens[nr_token].type=rules[i].token_type;
             for(j=0;j<substr_len;j++){
               tokens[nr_token].str[j]=substr_start[j];
             }
+            nr_token++;
             break;
         }
-        nr_token++;
         break;
       }
     }
