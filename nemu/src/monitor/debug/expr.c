@@ -104,13 +104,13 @@ static bool make_token(char *e) {
           case TK_NOTYPE: 
             break;
           case '-':
-            if(nr_token == 0 || tokens[nr_token-1].type != TK_HEX || tokens[nr_token-1].type != TK_NUM || tokens[nr_token-1].type != TK_REG) {
+            if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM && tokens[nr_token-1].type != TK_REG)) {
               tokens[nr_token].priority=2;
               tokens[nr_token].type=TK_MIN;
             }
             break;
           case '*':
-            if(nr_token == 0 || tokens[nr_token-1].type != TK_HEX || tokens[nr_token-1].type != TK_NUM || tokens[nr_token-1].type != TK_REG) {
+            if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM && tokens[nr_token-1].type != TK_REG)) {
               tokens[nr_token].priority=2;
               tokens[nr_token].type=TK_ADR;
             }
