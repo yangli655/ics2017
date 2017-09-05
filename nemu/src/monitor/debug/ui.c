@@ -137,8 +137,9 @@ static int cmd_p(char *args) {
     assert(0);
   }
   else {
-    int value = expr(args, &flag);
     printf("%s----\n",args);
+    int value = expr(args, &flag);
+    printf("%s+++++\n",args);
     printf("%d\n", value);
   }
   
