@@ -167,7 +167,7 @@ uint32_t dominant_op(int p, int q) {
   if (pos > p && tokens[pos-1].priority == 2){
     pos--;
   }
-  printf("op:\t%d\n",pos);
+  
 	return pos;
 }
 
@@ -217,7 +217,8 @@ static bool eval(int p, int q) {
       val2 = eval(op + 1, q);
     }
     int op_type=tokens[op].type;
-    printf("type:\t%d\t",op_type);
+    printf("op:\t%d\n",op);
+    printf("type:\t%d\n",op_type);
     
 		switch(op_type) {
 			case '+': return val1 + val2;
