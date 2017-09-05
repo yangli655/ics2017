@@ -102,6 +102,9 @@ static bool make_token(char *e) {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
             }
+            for(j=0;j<substr_len;j++){
+              tokens[nr_token].str[j]=substr_start[j];
+            }
             break;
           case '*':
             //tokens[nr_token].str[0]='*';
@@ -114,6 +117,9 @@ static bool make_token(char *e) {
             else {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
+            }
+            for(j=0;j<substr_len;j++){
+              tokens[nr_token].str[j]=substr_start[j];
             }
             break;
           
