@@ -174,6 +174,7 @@ static int eval(int p, int q) {
   }
   printf("\n");
   if (p>q) {
+    printf("%d %d\n",p,q);
     panic("Bad expression\n");
     return 0;
   }
