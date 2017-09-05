@@ -101,8 +101,7 @@ static bool make_token(char *e) {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
             }
-            tokens[nr_token].str[0]='-';
-            tokens[nr_token].str[1]='\0';
+            strcpy(tokens[nr_token].str,"-");
             break;
           case '*':
             if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM \
@@ -114,8 +113,7 @@ static bool make_token(char *e) {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
             }
-            tokens[nr_token].str[0]='*';
-            tokens[nr_token].str[1]='\0';
+            strcpy(tokens[nr_token].str,"*");
             break;
           
           default:
@@ -173,12 +171,7 @@ uint32_t dominant_op(int p, int q) {
 
 static int eval(int p, int q) {
   int value=0,val1=0,val2=0;
-  /*for(int i=p;i<=q;i++){
-    printf("%s\t",tokens[i].str);
-  }*/
-  printf("\n");
   if (p>q) {
-    //printf("%d %d\n",p,q);
     panic("Bad expression\n");
     return 0;
   }
@@ -201,7 +194,7 @@ static int eval(int p, int q) {
 			else if (!strcmp(tokens[p].str,"$esi")) return cpu.esi; 
 			else if (!strcmp(tokens[p].str,"$edi")) return cpu.edi;
 			else if (!strcmp(tokens[p].str,"$eip")) return cpu.eip;
-      else panic(" Bad expression\n");
+      else panic("Bad expression\n");
       return 0;
     }
     else {
