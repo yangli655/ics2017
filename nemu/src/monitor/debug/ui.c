@@ -104,14 +104,12 @@ static int cmd_si(char *args) {
     i=atoi(args);
     cpu_exec(i);
   }
-
   return 0;
 }
 
 static int cmd_info(char *args) {
   if (args == NULL) {
     printf("Instruction requires parameters\n");
-    assert(0);
   }
   else {
     if (!strcmp(args, "r")) {
@@ -124,7 +122,6 @@ static int cmd_info(char *args) {
     }
     else {
       printf("Unknown instruction parameters '%s'\n", args);
-      assert(0);
     }
   }
   return 0;
@@ -134,7 +131,6 @@ static int cmd_p(char *args) {
   bool flag;
   if (args == NULL) {
     printf("Instruction requires expression\n");
-    assert(0);
   }
   else {
     int value = expr(args, &flag);
