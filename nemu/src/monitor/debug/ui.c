@@ -134,9 +134,13 @@ static int cmd_p(char *args) {
   }
   else {
     int value = expr(args, &flag);
-    printf("result:\t%d\thex:\t0x%x\n", value,value);
+    if(flag) {
+      printf("result:\t%d\thex:\t0x%x\n", value,value);
+    }
+    else{
+      printf("make token error\n");
+    }
   }
-  
   return 0;
 }
 
@@ -151,16 +155,17 @@ static int cmd_x(char *args) {
     sscanf(args, "%d %s", &num, EXPR);
     if(strlen(EXPR)) {
       int value = expr(EXPR, &flag);
-      for(i=0;i<num;i++) {
-        printf("0x%08x\t",vaddr_read(value+i*4, 4));
+      if(flag) {
+        for(i=0;i<num;i++) {
+          printf("0x%08x\t",vaddr_read(value+i*4, 4));
+        }
+        printf("\n");
       }
-      printf("\n");
     }
     else {
       printf("Instruction requires parameters\n");
     }
   }
-  
   return 0;
 }
 
