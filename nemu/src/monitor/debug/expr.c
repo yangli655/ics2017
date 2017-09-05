@@ -167,7 +167,6 @@ uint32_t dominant_op(int p, int q) {
   if (pos > p && tokens[pos-1].priority == 2){
     pos--;
   }
-  printf("%d----\n",pos);
 	return pos;
 }
 
@@ -238,12 +237,10 @@ static bool eval(int p, int q) {
 
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
-    printf("68");
     *success = false;
     return 0;
   }
   /* TODO: Insert codes to evaluate the expression. */
   *success=true;
-  printf("7gfjd");
   return eval(0, nr_token-1);
 }
