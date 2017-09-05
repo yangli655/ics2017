@@ -184,6 +184,7 @@ static int eval(int p, int q) {
     }
     else if (tokens[p].type == TK_NUM) {
       sscanf(tokens[p].str,"%d", &value);
+      printf("##%d##\n",value);
       return value;
     }
     else if (tokens[p].type == TK_REG) {
