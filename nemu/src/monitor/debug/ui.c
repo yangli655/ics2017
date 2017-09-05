@@ -115,7 +115,7 @@ static int cmd_info(char *args) {
   }
   else {
     if (!strcmp(args, "r")) {
-      printf("eax: 0x%08x\tecx: 0x%08x\tedx: 0x%08x\tebx: 0x%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
+      printf("eax: 0x%08x\t\tecx: 0x%08x\t\tedx: 0x%08x\t\tebx: 0x%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
       printf("esp: 0x%08x\tebp: 0x%08x\tesi: 0x%08x\tedi: 0x%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
       printf("eip: 0x%08x\n", cpu.eip);
     }
