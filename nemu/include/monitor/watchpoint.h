@@ -1,15 +1,19 @@
 #ifndef __WATCHPOINT_H__
 #define __WATCHPOINT_H__
 
+#include <stdlib.h>
 #include "common.h"
 
 typedef struct watchpoint {
+  char exp[32];
+  int begin,now;
   int NO;
   struct watchpoint *next;
-
-  /* TODO: Add more members if necessary */
-
-
 } WP;
+
+WP* set_wp(char* args);
+bool del_wp(char* args);
+WP* new_wp();
+int free_wp(WP* wp);
 
 #endif

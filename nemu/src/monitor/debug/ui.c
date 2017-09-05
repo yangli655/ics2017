@@ -170,10 +170,23 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_w(char *args) {
+  WP* wp=set_wp(args);
+  if (wp) {
+    printf("Set watchpoint No. %d :%s\n",wp->NO,args);
+  }
+  else {
+    printf("Set watchpoint failed\n");
+  }
   return 0;
 }
 
 static int cmd_d(char *args) {
+  if(del_wp(args)) {
+    printf("Delete watchpoint succeed\n");
+  }
+  else {
+    printf("Delete watchpoint failed\n");
+  }
   return 0;
 }
 
