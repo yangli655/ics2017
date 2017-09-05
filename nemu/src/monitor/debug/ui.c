@@ -141,6 +141,25 @@ static int cmd_p(char *args) {
 }
 
 static int cmd_x(char *args) {
+  int num,i;
+  char EXPR[32];
+  bool flag;
+  if (args == NULL) {
+    printf("Instruction requires parameters\n");
+  }
+  else {
+    sscanf(args, "%d %s", &num, EXPR);
+    if(strlen(EXPR)) {
+      int value = expr(EXPR, &flag);
+      for(i=0;i<num;i++) {
+        printf("%x\t",vaddr_read(value+i*4, 4));
+      }
+    }
+    else {
+      printf("Instruction requires parameters\n");
+    }
+  }
+  
   return 0;
 }
 
