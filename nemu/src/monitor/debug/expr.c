@@ -81,7 +81,7 @@ static bool make_token(char *e) {
       if (regexec(&re[i], e + position, 1, &pmatch, 0) == 0 && pmatch.rm_so == 0) {
         char *substr_start = e + position;
         int substr_len = pmatch.rm_eo;
-        Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
+        //Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s", i, rules[i].regex, position, substr_len, substr_len, substr_start);
         position += substr_len;
         /* TODO: Now a new token is recognized with rules[i]. Add codes
          * to record the token in the array `tokens'. For certain types
@@ -92,7 +92,6 @@ static bool make_token(char *e) {
             nr_token--;
             break;
           case '-':
-            //tokens[nr_token].str[0]='-';
             if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM \
               && tokens[nr_token-1].type != TK_REG && tokens[nr_token-1].type != TK_RP)) {
               tokens[nr_token].priority=2;
@@ -102,14 +101,10 @@ static bool make_token(char *e) {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
             }
-            for(j=0;j<substr_len;j++){
-              tokens[nr_token].str[j]=substr_start[j];
-            }
-            tokens[nr_token].str[j]='\0';
+            tokens[nr_token].str[0]='-';
+            tokens[nr_token].str[1]='\0';
             break;
           case '*':
-            //tokens[nr_token].str[0]='*';
-
             if(nr_token == 0 || (tokens[nr_token-1].type != TK_HEX && tokens[nr_token-1].type != TK_NUM \
               && tokens[nr_token-1].type != TK_REG && tokens[nr_token-1].type != TK_RP)) {
               tokens[nr_token].priority=2;
@@ -119,10 +114,8 @@ static bool make_token(char *e) {
               tokens[nr_token].priority=rules[i].priority;
               tokens[nr_token].type=rules[i].token_type;
             }
-            for(j=0;j<substr_len;j++){
-              tokens[nr_token].str[j]=substr_start[j];
-            }
-            tokens[nr_token].str[j]='\0';
+            tokens[nr_token].str[0]='*';
+            tokens[nr_token].str[1]='\0';
             break;
           
           default:
