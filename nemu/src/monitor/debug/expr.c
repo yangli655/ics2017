@@ -123,7 +123,6 @@ static bool make_token(char *e) {
         break;
       }
     }
-    
     if (i == NR_REGEX) {
       printf("no match at position %d\n%s\n%*.s^\n", position, e, position, "");
       return false;
@@ -150,7 +149,6 @@ static bool check_parentheses(int p, int q) {
 
 uint32_t dominant_op(int p, int q) {
 	int i, pos=p, par=0, min_priority=0;
-
 	for (i = p; i <= q; i++) {
 		if (tokens[i].type == TK_LP) par++;
 		else if (tokens[i].type == TK_RP) par--;
@@ -162,7 +160,6 @@ uint32_t dominant_op(int p, int q) {
   if (pos > p && tokens[pos-1].priority == 2){
     pos--;
   }
-  
 	return pos;
 }
 
@@ -223,7 +220,7 @@ static int eval(int p, int q) {
       case TK_OR: return val1 || val2;
       case TK_NOT: return !val1;
       case TK_MIN: return -val1;
-      //case TK_ADR: return vaddr_read(val1, 4);*/
+      case TK_ADR: return vaddr_read(val1, 4);
       default: assert(0);
 		}
 	}
