@@ -219,6 +219,7 @@ static int eval(int p, int q) {
     int op_type=tokens[op].type;
     printf("op:\t%d\n",op);
     printf("type:\t%d\n",op_type);
+    printf("%d\t%d\n",p,q);
     
 		switch(op_type) {
 			case '+': return val1 + val2;
