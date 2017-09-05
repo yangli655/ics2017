@@ -210,21 +210,16 @@ static int eval(int p, int q) {
   }
   else {
     int op = dominant_op(p, q);
+    printf("op:\t%d\ttype:\t%d\t%d\t%d\t%d\n",op,tokens[op].type,tokens[op].priority,p,q);
     /*if (tokens[op].priority == 2){
       val1=eval(p+1,q);
-      printf("111111\n");
     }
     else {*/
-      val1 = eval(p, op - 1);
-      val2 = eval(op + 1, q);
-      printf("222222\n");
+    val1 = eval(p, op - 1);
+    val2 = eval(op + 1, q);
     //}
-    int op_type=tokens[op].type;
-    printf("op:\t%d\n",op);
-    printf("type:\t%d\n",op_type);
-    printf("%d\t%d\n",p,q);
     
-		switch(op_type) {
+		switch(tokens[op].type) {
 			case '+': return val1 + val2;
 			case '-': return val1 - val2;
 			case '*': return val1 * val2;
