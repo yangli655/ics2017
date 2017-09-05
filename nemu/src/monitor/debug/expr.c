@@ -167,6 +167,7 @@ uint32_t dominant_op(int p, int q) {
   if (pos > p && tokens[pos-1].priority == 2){
     pos--;
   }
+  printf("op:\t%d\n",pos);
 	return pos;
 }
 
