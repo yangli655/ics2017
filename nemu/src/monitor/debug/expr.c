@@ -242,6 +242,7 @@ static bool eval(int p, int q) {
 
 uint32_t expr(char *e, bool *success) {
   if (!make_token(e)) {
+    printf("68");
     *success = false;
     return 0;
   }
