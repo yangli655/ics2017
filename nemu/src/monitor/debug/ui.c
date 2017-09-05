@@ -138,7 +138,7 @@ static int cmd_p(char *args) {
   }
   else {
     int value = expr(args, &flag);
-    printf("result:\t%d\thex:\t%x\n", value,value);
+    printf("result:\t%d\thex:\t0x%x\n", value,value);
   }
   
   return 0;
