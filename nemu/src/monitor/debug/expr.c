@@ -175,7 +175,7 @@ static bool eval(int p, int q) {
   int value=0,val1=0,val2=0;
   if (p>q) {
     panic("Bad expression\n");
-    assert(0);
+    return 0;
   }
   else if (p==q) {
     if (tokens[p].type == TK_HEX){
@@ -197,11 +197,11 @@ static bool eval(int p, int q) {
 			else if (!strcmp(tokens[p].str,"$edi")) return cpu.edi;
 			else if (!strcmp(tokens[p].str,"$eip")) return cpu.eip;
       else panic(" Bad expression\n");
-      assert(0);
+      return 0;
     }
     else {
       panic("Bad expression\n");
-      assert(0);
+      return 0;
     }
   }
   else if (check_parentheses(p, q) == true) {
@@ -235,7 +235,6 @@ static bool eval(int p, int q) {
       default: assert(0);
 		}
 	}
-  return 0;
 }
 
 uint32_t expr(char *e, bool *success) {
