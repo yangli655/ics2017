@@ -15,5 +15,6 @@ WP* set_wp(char* args);
 bool del_wp(char* args);
 WP* new_wp();
 int free_wp(WP* wp);
+int print_wp();
 
 #endif

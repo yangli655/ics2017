@@ -20,6 +20,19 @@ void init_wp_pool() {
 
 /* TODO: Implement the functionality of watchpoint */
 
+int print_wp() {
+  WP* p=head;
+  if(!p) {
+    printf("No watchpoint\n");
+  }
+  else {
+    for (;p;p=p->next) {
+      printf("No.%2d\tEXPR:%s\n",p->NO,p->exp);
+    }
+  }
+  return 0;
+}
+
 WP* set_wp(char* args) {
   bool flag;
   int value=expr(args,&flag);

@@ -117,8 +117,8 @@ static int cmd_info(char *args) {
       printf("esp: 0x%08x\t\tebp: 0x%08x\t\tesi: 0x%08x\t\tedi: 0x%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
       printf("eip: 0x%08x\n", cpu.eip);
     }
-    else if (strcmp(args, "w") == 0) {
-      return 0;
+    else if (!strcmp(args, "w")) {
+      print_wp();
     }
     else {
       printf("Unknown instruction parameters '%s'\n", args);
