@@ -142,9 +142,6 @@ static bool make_token(char *e) {
       return false;
     }
   }
-  for(int j=0 ; j<nr_token;j++){
-    printf("********%s\t%d\n",tokens[j].str,tokens[j].type);
-  }
   return true;
 }
 
@@ -184,7 +181,6 @@ uint32_t dominant_op(int p, int q) {
 
 static int eval(int p, int q) {
   int value=0,val1=0,val2=0;
-  printf("$%d %d\n",p,q);
   if (p>q) {
     panic("Bad expression\n");
     return 0;
@@ -221,15 +217,14 @@ static int eval(int p, int q) {
   }
   else {
     int op = dominant_op(p, q);
-    printf("op:\t%d\ttype:\t%d\t%d\t%d\t%d\n",op,tokens[op].type,tokens[op].priority,p,q);
-    /*if (tokens[op].priority == 2){
+    
+    if (tokens[op].priority == 2){
       val1=eval(p+1,q);
     }
-    else {*/
-    val1 = eval(p, op - 1);
-    val2 = eval(op + 1, q);
-    //}
-    
+    else {
+      val1 = eval(p, op - 1);
+      val2 = eval(op + 1, q);
+    }
 		switch(tokens[op].type) {
 			case '+': return val1 + val2;
 			case '-': return val1 - val2;
