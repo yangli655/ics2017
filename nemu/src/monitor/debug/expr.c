@@ -231,9 +231,9 @@ static int eval(int p, int q) {
       case TK_NEQ: return val1 != val2;
       case TK_AND: return val1 && val2;
       case TK_OR: return val1 || val2;
-      case TK_NOT: return !val1;
+      /*case TK_NOT: return !val1;
       case TK_MIN: return -val1;
-      case TK_ADR: return vaddr_read(val1, 4);
+      case TK_ADR: return vaddr_read(val1, 4);*/
       default: assert(0);
 		}
 	}
