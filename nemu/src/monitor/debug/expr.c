@@ -115,7 +115,6 @@ static bool make_token(char *e) {
             }
             strcpy(tokens[nr_token].str,"*");
             break;
-          
           default:
             tokens[nr_token].priority=rules[i].priority;
             tokens[nr_token].type=rules[i].token_type;

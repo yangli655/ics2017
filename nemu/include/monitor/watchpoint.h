@@ -5,7 +5,7 @@
 #include "common.h"
 
 typedef struct watchpoint {
-  char exp[64];
+  char* exp;
   int value;
   int NO;
   struct watchpoint *next;
