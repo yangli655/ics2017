@@ -55,6 +55,6 @@ make_EHelper(setcc) {
 
 make_EHelper(not) {
   TODO();
-
+ 
   print_asm_template1(not);
 }
