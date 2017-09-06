@@ -146,7 +146,7 @@ static int cmd_p(char *args) {
 
 static int cmd_x(char *args) {
   int num,i;
-  char EXPR[32];
+  char EXPR[64];
   bool flag;
   if (args == NULL) {
     printf("Instruction requires parameters\n");
