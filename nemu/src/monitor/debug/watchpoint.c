@@ -51,9 +51,11 @@ bool check_wp() {
 WP* set_wp(char* args) {
   bool flag;
   int value=expr(args,&flag);
+  int len=strlen(args);
   WP* wp=new_wp();
   if (flag) {
     wp->value=value;
+    wp->exp=(char*)malloc((len+1)*sizeof(char));
     strcpy(wp->exp,args);
     return wp;
   }
@@ -65,6 +67,7 @@ bool del_wp(char* args) {
   int no=atoi(args);
   for(;p;p=p->next) {
     if (p->NO == no) {
+      free(p->exp);
       free_wp(p);
       return true;
     }
