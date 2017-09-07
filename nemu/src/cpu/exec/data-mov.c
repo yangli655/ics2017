@@ -7,7 +7,7 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
-  rtl_push(&decoding.dest.val);
+  rtl_push(&reg_l(decoding.dest.val));
 
   print_asm_template1(push);
 }
