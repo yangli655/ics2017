@@ -6,17 +6,13 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-  //TODO();
-  rtl_subi(&reg_l(R_ESP),&reg_l(R_ESP),4);
-  rtl_sm(&reg_l(R_ESP),4,&decoding.src.reg);
+  TODO();
 
   print_asm_template1(push);
 }
 
 make_EHelper(pop) {
-  //TODO();
-  rtl_lm(&decoding.dest.reg,&reg_l(R_ESP),4);
-  rtl_addi(&reg_l(R_ESP),&reg_l(R_ESP),4);
+  TODO();
 
   print_asm_template1(pop);
 }

@@ -17,5 +17,4 @@ run: all
 
 clean: 
 	rm -rf Makefile.* build/
-
 latest:
