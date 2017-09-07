@@ -8,7 +8,8 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
   //TODO();
-  //rtl_sub(&reg_l(decoding.dest.val),&reg_l(decoding.dest.val),decoding.dest.val))
+  rtl_sext(&t0,&decoding.src.val,4);
+  rtl_sub(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),&t0);
 
   print_asm_template2(sub);
 }
