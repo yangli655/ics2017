@@ -19,11 +19,7 @@ make_EHelper(xor) {
   rtl_li(&t1,1);
   rtl_set_OF(&t0);
   rtl_set_CF(&t0);
-  if (reg_l(decoding.dest.reg)==0) {
-    rtl_update_ZF(&decoding.dest.reg,decoding.dest.width);
-  }
-  
-
+  rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
 
   print_asm_template2(xor);
 }
