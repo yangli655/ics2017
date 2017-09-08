@@ -8,8 +8,8 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
   //TODO();
-  printf("%d\n",decoding.dest.reg);
-  rtl_subi(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),decoding.src.val);
+  printf("%d\n",decoding.dest.val);
+  rtl_subi(&reg_l(decoding.dest.val),&reg_l(decoding.dest.val),decoding.src.val);
 
   print_asm_template2(sub);
 }
