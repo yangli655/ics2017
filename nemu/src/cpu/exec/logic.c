@@ -13,7 +13,9 @@ make_EHelper(and) {
 }
 
 make_EHelper(xor) {
-  TODO();
+  //TODO();
+  cpu.OF=0;
+  cpu.CF=0;
 
   print_asm_template2(xor);
 }
