@@ -13,8 +13,8 @@ make_EHelper(push) {
 }
 
 make_EHelper(pop) {
-  TODO();
-
+  //TODO();
+  rtl_pop(&reg_l(decoding.dest.reg));
   print_asm_template1(pop);
 }
 
