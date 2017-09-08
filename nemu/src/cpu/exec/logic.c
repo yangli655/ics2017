@@ -15,11 +15,12 @@ make_EHelper(and) {
 make_EHelper(xor) {
   //TODO();
   rtl_xor(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),&reg_l(decoding.src.reg));
-  //rtl_set_OF(0);
-  //rtl_set_CF(0);
-  //if (reg_l(decoding.dest.reg)==0) {
-    //rtl_set_ZF(0);
-  //}
+  rtl_li(&t1,0);
+  rtl_set_OF(&t1);
+  rtl_set_CF(&t1);
+  if (reg_l(decoding.dest.reg)==0) {
+    rtl_set_ZF(&t1);
+  }
   
 
 
