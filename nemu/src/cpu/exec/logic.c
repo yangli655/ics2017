@@ -16,6 +16,8 @@ make_EHelper(xor) {
   //TODO();
   cpu.OF=0;
   cpu.CF=0;
+  rtl_xor(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),&reg_l(decoding.src.reg));
+  
 
   print_asm_template2(xor);
 }
