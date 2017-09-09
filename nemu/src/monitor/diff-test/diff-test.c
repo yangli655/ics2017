@@ -168,6 +168,8 @@ void difftest_step(uint32_t eip) {
     diff=true;
   if(r.eip!=cpu.eip)
     diff=true;
+  if((r.eflags&0xac1) != (cpu.eip&0xac1))
+    diff=true;
   
   if (diff) {
     nemu_state = NEMU_END;
