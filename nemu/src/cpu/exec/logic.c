@@ -10,7 +10,7 @@ make_EHelper(and) {
   //TODO();
   rtl_li(&t1,decoding.src.val);
   rtl_sext(&t1,&t1,4);
-  printf("T1:\t%d\t%d\n",decoding.src.val,t1);
+  printf("T1:\t%0x08x\t0x%08x\n",decoding.src.val,t1);
   rtl_li(&t0,0);
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
