@@ -7,7 +7,13 @@ make_EHelper(test) {
 }
 
 make_EHelper(and) {
-  TODO();
+  //TODO();
+  rtl_sext(&t1,&reg_l(decoding.src.reg),4);
+  rtl_li(&t0,0);
+  rtl_set_CF(&t0);
+  rtl_set_OF(&t0);
+  rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
+  rtl_and(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),&t1);
 
   print_asm_template2(and);
 }
