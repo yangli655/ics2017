@@ -189,6 +189,7 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
   //TODO();
   rtl_li(&t0,0xffffffff);
+  printf("0x%08x\t",t0);
   rtl_shli(&t0,&t0,(4-width)*8);
   rtl_shri(&t0,&t0,(4-width)*8);
   rtl_and(&t0,&t0,result);
