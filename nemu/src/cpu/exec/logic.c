@@ -16,7 +16,6 @@ make_EHelper(xor) {
   //TODO();
   rtl_xor(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),&reg_l(decoding.src.reg));
   rtl_li(&t0,0);
-  rtl_li(&t1,1);
   rtl_set_OF(&t0);
   rtl_set_CF(&t0);
   rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
