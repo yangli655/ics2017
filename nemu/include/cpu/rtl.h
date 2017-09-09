@@ -192,8 +192,9 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   rtl_shli(&t0,result,(4-width)*8);
   rtl_shri(&t0,&t0,(4-width)*8);
   rtl_eq0(&t0,&t0);
-  printf("111\t0x%08x\n",t0);
+  
   rtl_set_ZF(&t0);
+  printf("0x%08x\t %d\n",t0,cpu._ZF);
 }
 
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
