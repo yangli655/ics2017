@@ -194,7 +194,7 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   printf("0x%08x\n",t0);
   rtl_eq0(&t1,&t0);
   printf("111\t0x%08x\n",t0);
-  rtl_set_ZF(&t1);
+  rtl_set_ZF(&t0);
 }
 
 static inline void rtl_update_SF(const rtlreg_t* result, int width) {
