@@ -114,7 +114,6 @@ static inline void rtl_sr(int r, int width, const rtlreg_t* src1) {
 #define make_rtl_setget_eflags(f) \
   static inline void concat(rtl_set_, f) (const rtlreg_t* src) { \
     concat(cpu._, f)=*src & 0x1;\
-    printf("f:%d\t",concat(cpu._, f));\
   } \
   static inline void concat(rtl_get_, f) (rtlreg_t* dest) { \
     *dest=concat(cpu._, f);\
@@ -190,7 +189,6 @@ static inline void rtl_update_ZF(const rtlreg_t* result, int width) {
   // eflags.ZF <- is_zero(result[width * 8 - 1 .. 0])
   //TODO();
   rtl_li(&t0,0xffffffff);
-  printf("0x%08x\t",t0);
   rtl_shli(&t0,&t0,(4-width)*8);
   rtl_shri(&t0,&t0,(4-width)*8);
   rtl_and(&t0,&t0,result);

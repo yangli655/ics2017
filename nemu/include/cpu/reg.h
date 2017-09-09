@@ -33,7 +33,7 @@ typedef struct {
   };
   union {
     uint32_t EFLAGS;
-    union {
+    struct {
       uint32_t _CF : 1;
       uint32_t     : 5;
       uint32_t _ZF : 1;
