@@ -8,8 +8,9 @@ make_EHelper(test) {
 
 make_EHelper(and) {
   //TODO();
-  rtl_sext(&t1,&reg_l(decoding.src.reg),4);
-  printf("T1:\t%d\n",t1);
+  rtl_li(&t1,decoding.src.val);
+  rtl_sext(&t1,&t1,4);
+  printf("T1:\t%d\t%d\n",decoding.src.val,t1);
   rtl_li(&t0,0);
   rtl_set_CF(&t0);
   rtl_set_OF(&t0);
