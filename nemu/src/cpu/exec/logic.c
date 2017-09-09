@@ -19,7 +19,7 @@ make_EHelper(xor) {
   rtl_set_OF(&t0);
   rtl_set_CF(&t0);
   rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
-
+  printf("0x%08x\n",reg_l(decoding.dest.reg));
   print_asm_template2(xor);
 }
 
