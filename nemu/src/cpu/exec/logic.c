@@ -26,11 +26,17 @@ make_EHelper(xor) {
   rtl_set_OF(&t0);
   rtl_set_CF(&t0);
   rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
+
   print_asm_template2(xor);
 }
 
 make_EHelper(or) {
-  TODO();
+  //TODO();
+  rtl_or(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
+  rtl_li(&t0,0);
+  rtl_set_OF(&t0);
+  rtl_set_CF(&t0);
+  rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
 
   print_asm_template2(or);
 }
