@@ -87,9 +87,10 @@ make_EHelper(adc) {
   rtl_sltu(&t0, &t2, &id_dest->val);
 
   rtl_sltu(&t1, &t2, &id_src->val);
-  printf("%x\t%x\t%x\t%d\t%d\n",t2,id_dest->val,id_src->val,t1,t0);
+  printf("%x\t%x\t%x\t%d\t%d\t",t2,id_dest->val,id_src->val,t1,t0);
   rtl_or(&t1,&t1,&t0);
   rtl_set_CF(&t0);
+  printf("%d\t%d\n",t1,t0);
 
   rtl_xor(&t0, &id_dest->val, &id_src->val);
   rtl_not(&t0);
