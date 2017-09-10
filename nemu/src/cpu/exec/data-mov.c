@@ -7,6 +7,7 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
+  printf("%d\n",decoding.dest.width);
   rtl_push(&reg_l(decoding.dest.reg));
 
   print_asm_template1(push);
