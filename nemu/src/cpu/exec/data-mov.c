@@ -91,13 +91,13 @@ make_EHelper(xchg) {
     rtl_lr_w(&t1,R_AX);
     rtl_sr_w(R_AX,&t0);
     rtl_sr_w(decoding.dest.reg,&t1);
-    print_asm(str(xchg) "%c ,%s", suffix_char(id_dest->width), id_dest->str);
+    print_asm(str(xchg) "%c  %%ax,%s", suffix_char(id_dest->width), id_dest->str);
   }
   else {
     rtl_lr_l(&t0,decoding.dest.reg);
     rtl_lr_l(&t1,R_EAX);
     rtl_sr_l(R_EAX,&t0);
     rtl_sr_l(decoding.dest.reg,&t1);
-    print_asm(str(xchg) "%c ,%s", suffix_char(id_dest->width), id_dest->str);
+    print_asm(str(xchg) "%c %%eax,%s", suffix_char(id_dest->width), id_dest->str);
   }
 }
