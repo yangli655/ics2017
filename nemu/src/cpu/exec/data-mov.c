@@ -85,9 +85,16 @@ make_EHelper(lea) {
 }
 
 make_EHelper(xchg) {
-  //rtl_lr_w(&t0,decoding.dest.val);
-  //rtl_lr_w(&t1,decoding.src.val);
-  //rtl_sr_w(decoding.dest.val,&t1);
-  //rtl_sr_w(decoding.src.val,&t0);
-  
+  if (decoding.dest.width == 2) {
+    rtl_lr_w(&t0,decoding.dest.reg);
+    rtl_lr_w(&t1,R_AX);
+    rtl_sr_w(R_AX,&t0);
+    rtl_sr_w(decoding.dest.reg,&t1);
+  }
+  else {
+    rtl_lr_l(&t0,decoding.dest.reg);
+    rtl_lr_l(&t1,R_EAX);
+    rtl_sr_l(R_EAX,&t0);
+    rtl_sr_l(decoding.dest.reg,&t1);
+  }
 }
