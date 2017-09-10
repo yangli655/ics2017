@@ -97,4 +97,5 @@ make_EHelper(xchg) {
     rtl_sr_l(R_EAX,&t0);
     rtl_sr_l(decoding.dest.reg,&t1);
   }
+  print_asm_template2(xchg);
 }
