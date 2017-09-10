@@ -2,7 +2,8 @@
 
 make_EHelper(add) {
   //TODO();
-  printf("%d\t%d\n",decoding.src2.val,decoding.dest.reg);
+  rtl_addi(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),decoding.src.val);
+  rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
   print_asm_template2(add);
 }
 
