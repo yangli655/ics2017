@@ -11,7 +11,8 @@ make_EHelper(push) {
     
     rtl_li(&t1,decoding.dest.val);
     //rtl_li(&t1,decoding.dest.reg);
-    //rtl_sext(&t1,&t1,decoding.dest.width);
+    rtl_sext(&t1,&t1,decoding.dest.width);
+    rtl_push(&t1);
     printf("%d\t0x%08x\n",decoding.dest.width,t1);
   }
   else {
