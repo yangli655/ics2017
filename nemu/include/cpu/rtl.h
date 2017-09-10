@@ -3,7 +3,7 @@
 
 #include "nemu.h"
 
-extern rtlreg_t t0, t1, t2, t3 ,t4;
+extern rtlreg_t t0, t1, t2, t3;
 extern const rtlreg_t tzero;
 
 /* RTL basic instructions */

@@ -4,7 +4,7 @@ make_EHelper(test) {
   //TODO();
   //if (id_src->width == 4)
   rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
-  
+
   rtl_li(&t0,0);
   rtl_set_OF(&t0);
   rtl_set_CF(&t0);
@@ -52,8 +52,12 @@ make_EHelper(or) {
 }
 
 make_EHelper(sar) {
-  TODO();
+  //TODO();
   // unnecessary to update CF and OF in NEMU
+  rtl_lr(&t0,id_dest->reg,id_dest->width);
+  rtl_sari(&t0,&t0,id_src->val);
+  rtl_sr(id_dest->reg,id_dest->width,&t0);
+  rtl_update_ZFSF(&t0,id_dest->width);
 
   print_asm_template2(sar);
 }
