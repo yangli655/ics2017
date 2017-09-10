@@ -85,5 +85,6 @@ make_EHelper(lea) {
 }
 
 make_EHelper(xchg) {
+  //if (decoding.dest.type == OP_TYPE_MEM)
   print_asm_template2(xchg);
 }
