@@ -22,8 +22,6 @@ make_EHelper(add) {
 
 make_EHelper(sub) {
   //TODO();
-  //rtl_subi(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),decoding.src.val);
-  //rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
 
   rtl_sub(&t2, &id_dest->val, &id_src->val);
   operand_write(id_dest, &t2);

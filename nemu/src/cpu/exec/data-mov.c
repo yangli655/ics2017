@@ -7,13 +7,13 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
-  if (decoding.dest.type == OP_TYPE_MEM) {
-    rtl_li(&t1,decoding.dest.val);
-    rtl_sext(&t1,&t1,decoding.dest.width);
+  if (id_dest->type == OP_TYPE_MEM) {
+    rtl_li(&t1,id_dest->val);
+    rtl_sext(&t1,&t1,id_dest->width);
     rtl_push(&t1);
   }
   else {
-    rtl_push(&reg_l(decoding.dest.reg));
+    rtl_push(&reg_l(id_dest->reg));
   }
 
   print_asm_template1(push);
@@ -21,7 +21,7 @@ make_EHelper(push) {
 
 make_EHelper(pop) {
   //TODO();
-  rtl_pop(&reg_l(decoding.dest.reg));
+  rtl_pop(&reg_l(id_dest->reg));
   print_asm_template1(pop);
 }
 
@@ -86,18 +86,18 @@ make_EHelper(lea) {
 
 make_EHelper(xchg) {
   //TODO()
-  if (decoding.dest.width == 2) {
-    rtl_lr_w(&t0,decoding.dest.reg);
+  if (id_dest->width == 2) {
+    rtl_lr_w(&t0,id_dest->reg);
     rtl_lr_w(&t1,R_AX);
     rtl_sr_w(R_AX,&t0);
-    rtl_sr_w(decoding.dest.reg,&t1);
+    rtl_sr_w(id_dest->reg,&t1);
     print_asm(str(xchg) "%c %%ax,%s", suffix_char(id_dest->width), id_dest->str);
   }
   else {
-    rtl_lr_l(&t0,decoding.dest.reg);
+    rtl_lr_l(&t0,id_dest->reg);
     rtl_lr_l(&t1,R_EAX);
     rtl_sr_l(R_EAX,&t0);
-    rtl_sr_l(decoding.dest.reg,&t1);
+    rtl_sr_l(id_dest->reg,&t1);
     print_asm(str(xchg) "%c %%eax,%s", suffix_char(id_dest->width), id_dest->str);
   }
 }
