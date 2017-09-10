@@ -3,7 +3,12 @@
 make_EHelper(test) {
   //TODO();
   //if (id_src->width == 4)
-    rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
+  rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
+  
+  rtl_li(&t0,0);
+  rtl_set_OF(&t0);
+  rtl_set_CF(&t0);
+  rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
   //else {
     //rtl_and(&reg_w(id_dest->reg),&reg_w(id_dest->reg),&reg_w(id_src->reg));
   //}
