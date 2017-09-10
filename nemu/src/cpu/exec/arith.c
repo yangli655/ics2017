@@ -7,7 +7,12 @@ make_EHelper(add) {
 
   rtl_update_ZFSF(&t2, id_dest->width);
 
+  //rtl_sltu(&t0, &t2, &id_dest->val);
+  //rtl_set_CF(&t0);
+
   rtl_sltu(&t0, &t2, &id_dest->val);
+  rtl_sltu(&t1, &t2, &id_src->val);
+  rtl_or(&t0,&t0,&t1);
   rtl_set_CF(&t0);
 
   rtl_xor(&t0, &id_dest->val, &id_src->val);
@@ -85,12 +90,9 @@ make_EHelper(adc) {
   rtl_update_ZFSF(&t2, id_dest->width);
 
   rtl_sltu(&t0, &t2, &id_dest->val);
-
   rtl_sltu(&t1, &t2, &id_src->val);
-  printf("%x\t%x\t%x\t%d\t%d\t",t2,id_dest->val,id_src->val,t1,t0);
-  rtl_or(&t0,&t1,&t0);
+  rtl_or(&t0,&t0,&t1);
   rtl_set_CF(&t0);
-  printf("%d\t%d\n",t1,t0);
 
   rtl_xor(&t0, &id_dest->val, &id_src->val);
   rtl_not(&t0);
