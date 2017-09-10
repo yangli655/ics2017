@@ -101,10 +101,3 @@ make_EHelper(xchg) {
     print_asm(str(xchg) "%c %%eax,%s", suffix_char(id_dest->width), id_dest->str);
   }
 }
-
-make_EHelper(sete) {
-  rtl_get_ZF(&t0);
-  rtl_neq0(&t1,&t0);
-  rtl_sr_b(reg_b(id_dest->reg),&t1);
-  print_asm_template1(sete);
-}

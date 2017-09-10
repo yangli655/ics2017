@@ -119,7 +119,6 @@ static inline void rtl_sr(int r, int width, const rtlreg_t* src1) {
     *dest=concat(cpu._, f);\
   }
 
-
 make_rtl_setget_eflags(CF)
 make_rtl_setget_eflags(OF)
 make_rtl_setget_eflags(ZF)

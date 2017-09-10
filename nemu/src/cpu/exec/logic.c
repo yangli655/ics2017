@@ -1,7 +1,12 @@
 #include "cpu/exec.h"
 
 make_EHelper(test) {
-  TODO();
+  //TODO();
+  //if (id_src->width == 4)
+    rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
+  //else {
+    //rtl_and(&reg_w(id_dest->reg),&reg_w(id_dest->reg),&reg_w(id_src->reg));
+  //}
 
   print_asm_template2(test);
 }
