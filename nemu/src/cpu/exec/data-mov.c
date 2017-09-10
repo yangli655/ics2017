@@ -12,6 +12,10 @@ make_EHelper(push) {
     rtl_sext(&t1,&t1,id_dest->width);
     rtl_push(&t1);
   }
+  else if (id_dest->type == OP_TYPE_IMM){
+    rtl_li(&t0,id_dest->val);
+    rtl_push(&t0);
+  }
   else {
     rtl_push(&reg_l(id_dest->reg));
   }
