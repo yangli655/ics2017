@@ -66,7 +66,7 @@ make_EHelper(shl) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
   rtl_lr(&t3,id_dest->reg,id_dest->width);
-  printf("0x%08x\t%d\t",t3,id_src->val);
+  printf("0x%08x\t%d\t%d\t",t3,id_src->val,id_dest->width);
   rtl_shli(&t3,&t3,reg_b(id_src->val));
   rtl_sr(id_dest->reg,id_dest->width,&t3);
   printf("%x\t%d\n",t3,reg_b(id_src->val));
