@@ -10,7 +10,7 @@ make_EHelper(sub) {
   //TODO();
   //if (reg_l(decoding.dest.reg) < decoding.src.val)
   rtl_subi(&reg_l(decoding.dest.reg),&reg_l(decoding.dest.reg),decoding.src.val);
-  //rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
+  rtl_update_ZFSF(&reg_l(decoding.dest.reg),decoding.dest.width);
 
   print_asm_template2(sub);
 }
