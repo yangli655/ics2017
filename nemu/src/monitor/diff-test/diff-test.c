@@ -151,24 +151,42 @@ void difftest_step(uint32_t eip) {
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
   
-  if(r.eax!=cpu.eax)
+  if(r.eax!=cpu.eax){
     diff=true;
-  if(r.ecx!=cpu.ecx)
+    printf("eax\n");
+  }
+  if(r.ecx!=cpu.ecx){
     diff=true;
-  if(r.edx!=cpu.edx)
+    printf("ecx\n");
+  }
+  if(r.edx!=cpu.edx){
     diff=true;
-  if(r.ebx!=cpu.ebx)
+    printf("edx\n");
+  }
+  if(r.ebx!=cpu.ebx){
     diff=true;
-  if(r.esp!=cpu.esp)
+    printf("ebx\n");
+  }
+  if(r.esp!=cpu.esp){
     diff=true;
-  if(r.ebp!=cpu.ebp)
+    printf("esp\n");
+  }
+  if(r.ebp!=cpu.ebp){
     diff=true;
-  if(r.esi!=cpu.esi)
+    printf("ebp\n");
+  }
+  if(r.esi!=cpu.esi){
     diff=true;
-  if(r.edi!=cpu.edi)
+    printf("esi\n");
+  }
+  if(r.edi!=cpu.edi){
     diff=true;
-  if(r.eip!=cpu.eip)
+    printf("edi\n");
+  }
+  if(r.eip!=cpu.eip){
     diff=true;
+    printf("eip\n");
+  }
   if((r.eflags&0xac1) != (cpu.EFLAGS&0xac1)){
     diff=true;
     printf("0x%08x\t0x%08x\n",r.eflags&0xac1,cpu.EFLAGS&0xac1);
