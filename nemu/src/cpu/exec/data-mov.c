@@ -7,7 +7,14 @@ make_EHelper(mov) {
 
 make_EHelper(push) {
   //TODO();
-  printf("%d\n",decoding.dest.width);
+  if (decoding.dest.type == OP_TYPE_MEM) {
+    
+    rtl_li(&t1,decoding.dest.val);
+    rtl_sext(&t1,&t1,decoding.dest.width);
+    printf("%d\t0x%08x\n",decoding.dest.width,t1);
+  }
+  
+
   rtl_push(&reg_l(decoding.dest.reg));
 
   print_asm_template1(push);
