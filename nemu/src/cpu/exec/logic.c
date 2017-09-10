@@ -63,7 +63,7 @@ make_EHelper(sar) {
 }
 
 make_EHelper(shl) {
-  TODO();
+  //TODO();
   // unnecessary to update CF and OF in NEMU
   rtl_lr(&t3,id_dest->reg,id_dest->width);
   rtl_shli(&t3,&t3,reg_b(id_src->val));
