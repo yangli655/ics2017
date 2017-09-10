@@ -8,12 +8,9 @@ make_EHelper(mov) {
 make_EHelper(push) {
   //TODO();
   if (decoding.dest.type == OP_TYPE_MEM) {
-    
     rtl_li(&t1,decoding.dest.val);
-    //rtl_li(&t1,decoding.dest.reg);
     rtl_sext(&t1,&t1,decoding.dest.width);
     rtl_push(&t1);
-    printf("%d\t0x%08x\n",decoding.dest.width,t1);
   }
   else {
     rtl_push(&reg_l(decoding.dest.reg));
