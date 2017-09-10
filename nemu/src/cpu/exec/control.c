@@ -34,11 +34,8 @@ make_EHelper(call) {
 
 make_EHelper(ret) {
   //TODO();
-
-  //rtl_pop(eip);
   decoding.is_jmp = 1;
-  rtl_pop(&t0);
-  decoding.jmp_eip=t0;
+  rtl_pop(&decoding.jmp_eip);
 
   print_asm("ret");
 }
