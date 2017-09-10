@@ -5,9 +5,9 @@ make_EHelper(test) {
   //if (id_src->width == 4)
   rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
 
-  rtl_li(&t0,0);
-  rtl_set_OF(&t0);
-  rtl_set_CF(&t0);
+  rtl_li(&t3,0);
+  rtl_set_OF(&t3);
+  rtl_set_CF(&t3);
   rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
   //else {
     //rtl_and(&reg_w(id_dest->reg),&reg_w(id_dest->reg),&reg_w(id_src->reg));
@@ -20,9 +20,9 @@ make_EHelper(and) {
   //TODO();
   rtl_li(&t1,id_src->val);
   rtl_sext(&t1,&t1,id_src->width);
-  rtl_li(&t0,0);
-  rtl_set_CF(&t0);
-  rtl_set_OF(&t0);
+  rtl_li(&t3,0);
+  rtl_set_CF(&t3);
+  rtl_set_OF(&t3);
   rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
   rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&t1);
 
@@ -32,9 +32,9 @@ make_EHelper(and) {
 make_EHelper(xor) {
   //TODO();
   rtl_xor(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
-  rtl_li(&t0,0);
-  rtl_set_OF(&t0);
-  rtl_set_CF(&t0);
+  rtl_li(&t3,0);
+  rtl_set_OF(&t3);
+  rtl_set_CF(&t3);
   rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
 
   print_asm_template2(xor);
@@ -43,9 +43,9 @@ make_EHelper(xor) {
 make_EHelper(or) {
   //TODO();
   rtl_or(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
-  rtl_li(&t0,0);
-  rtl_set_OF(&t0);
-  rtl_set_CF(&t0);
+  rtl_li(&t3,0);
+  rtl_set_OF(&t3);
+  rtl_set_CF(&t3);
   rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
 
   print_asm_template2(or);
@@ -66,10 +66,9 @@ make_EHelper(shl) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
   rtl_lr(&t3,id_dest->reg,id_dest->width);
-  rtl_shli(&t2,&t3,id_src->val);
-  rtl_sr(id_dest->reg,id_dest->width,&t2);
-  rtl_update_ZFSF(&t2,id_dest->width);
-  printf("0x%08x\t 0x%08x\n",t3,t2);
+  rtl_shli(&t3,&t3,id_src->val);
+  rtl_sr(id_dest->reg,id_dest->width,&t3);
+  rtl_update_ZFSF(&t3,id_dest->width);
 
   print_asm_template2(shl);
 }
@@ -83,8 +82,8 @@ make_EHelper(shr) {
 
 make_EHelper(setcc) {
   uint8_t subcode = decoding.opcode & 0xf;
-  rtl_setcc(&t2, subcode);
-  operand_write(id_dest, &t2);
+  rtl_setcc(&t3, subcode);
+  operand_write(id_dest, &t3);
 
   print_asm("set%s %s", get_cc_name(subcode), id_dest->str);
 }

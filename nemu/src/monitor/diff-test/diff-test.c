@@ -192,7 +192,7 @@ void difftest_step(uint32_t eip) {
     printf("0x%08x\t0x%08x\n",r.eflags&0xac1,cpu.EFLAGS&0xac1);
   }
   if (diff) {
-    printf("In QEMU\n");
+    printf("***********In QEMU***************\n");
     printf("eax: 0x%08x\t\tecx: 0x%08x\t\tedx: 0x%08x\t\tebx: 0x%08x\n", r.eax, r.ecx, r.edx, r.ebx);
     printf("esp: 0x%08x\t\tebp: 0x%08x\t\tesi: 0x%08x\t\tedi: 0x%08x\n", r.esp, r.ebp, r.esi, r.edi);
     printf("eip: 0x%08x\t\teflags: 0x%08x\n", r.eip,r.eflags);

@@ -8,13 +8,13 @@ make_EHelper(mov) {
 make_EHelper(push) {
   //TODO();
   if (id_dest->type == OP_TYPE_MEM) {
-    rtl_li(&t1,id_dest->val);
-    rtl_sext(&t1,&t1,id_dest->width);
-    rtl_push(&t1);
+    rtl_li(&t3,id_dest->val);
+    rtl_sext(&t3,&t3,id_dest->width);
+    rtl_push(&t3);
   }
   else if (id_dest->type == OP_TYPE_IMM){
-    rtl_li(&t0,id_dest->val);
-    rtl_push(&t0);
+    rtl_li(&t3,id_dest->val);
+    rtl_push(&t3);
   }
   else {
     rtl_push(&reg_l(id_dest->reg));
@@ -91,17 +91,17 @@ make_EHelper(lea) {
 make_EHelper(xchg) {
   //TODO()
   if (id_dest->width == 2) {
-    rtl_lr_w(&t0,id_dest->reg);
-    rtl_lr_w(&t1,R_AX);
-    rtl_sr_w(R_AX,&t0);
-    rtl_sr_w(id_dest->reg,&t1);
+    rtl_lr_w(&t3,id_dest->reg);
+    rtl_lr_w(&t2,R_AX);
+    rtl_sr_w(R_AX,&t3);
+    rtl_sr_w(id_dest->reg,&t2);
     print_asm(str(xchg) "%c %%ax,%s", suffix_char(id_dest->width), id_dest->str);
   }
   else {
-    rtl_lr_l(&t0,id_dest->reg);
-    rtl_lr_l(&t1,R_EAX);
-    rtl_sr_l(R_EAX,&t0);
-    rtl_sr_l(id_dest->reg,&t1);
+    rtl_lr_l(&t3,id_dest->reg);
+    rtl_lr_l(&t2,R_EAX);
+    rtl_sr_l(R_EAX,&t3);
+    rtl_sr_l(id_dest->reg,&t2);
     print_asm(str(xchg) "%c %%eax,%s", suffix_char(id_dest->width), id_dest->str);
   }
 }
