@@ -69,6 +69,8 @@ make_EHelper(shl) {
   rtl_shli(&t3,&t3,id_src->val);
   rtl_sr(id_dest->reg,id_dest->width,&t3);
   rtl_update_ZFSF(&t3,id_dest->width);
+  rtl_li(&t2,1);
+  rtl_set_ZF(&t2);
 
   print_asm_template2(shl);
 }
