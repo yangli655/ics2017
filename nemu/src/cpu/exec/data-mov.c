@@ -90,4 +90,5 @@ make_EHelper(xchg) {
   //rtl_sr_w(decoding.dest.val,&t1);
   //rtl_sr_w(decoding.src.val,&t0);
   //print_asm_template2(xchg);
+  printf("fh\n");
 }
