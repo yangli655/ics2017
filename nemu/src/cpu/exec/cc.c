@@ -15,19 +15,27 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   // dest <- ( cc is satisfied ? 1 : 0)
   switch (subcode & 0xe) {
     case CC_O:
+      break;
     case CC_B:
+      break;
     case CC_E:
       rtl_get_ZF(&t0);
       rtl_neq0(&t1,&t0);
       rtl_sr_b(reg_b(CC_O),&t1);
       break;
     case CC_BE:
+      break;
     case CC_S:
+      break;
     case CC_L:
+      break;
     case CC_LE:
-      TODO();
+      break;
+      //TODO();
     default: panic("should not reach here");
+      break;
     case CC_P: panic("n86 does not have PF");
+      break;
   }
 
   if (invert) {
