@@ -50,7 +50,6 @@ make_EHelper(or) {
   rtl_or(&t2,&t2,&t3);
   rtl_sr(id_dest->reg,id_dest->width,&t2);
 
-  //rtl_or(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
   rtl_set_CF(&t3);
@@ -105,7 +104,13 @@ make_EHelper(setcc) {
 }
 
 make_EHelper(not) {
-  TODO();
- 
+  //TODO();
+  rtl_li(&t3,id_dest->val);
+  rtl_li(&t2,0xff);
+  rtl_sext(&t1,&t2,id_dest->width);
+  rtl_xor(&t3,&t3,&t1);
+
+  operand_write(id_dest, &t3);
+
   print_asm_template1(not);
 }
