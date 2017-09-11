@@ -34,6 +34,11 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_S:
       break;
     case CC_L:
+      rtl_get_SF(&t3);
+      rtl_get_OF(&t1);
+      rtl_xor(&t3,&t1,&t3);
+      rtl_eq0(&t1,&t0);
+      rtl_mv(dest,&t1);
       break;
     case CC_LE:
       rtl_get_ZF(&t0);
@@ -52,12 +57,6 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_xor(&t1,&t1,&t3);
       rtl_and(&t0,&t0,&t1);
       rtl_mv(dest,&t0);
-    case CC_NL:
-      rtl_get_SF(&t3);
-      rtl_get_OF(&t1);
-      rtl_xor(&t3,&t1,&t3);
-      rtl_eq0(&t1,&t0);
-      rtl_mv(dest,&t1);
       break;
     default: panic("should not reach here");
       break;
