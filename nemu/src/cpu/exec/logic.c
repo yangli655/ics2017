@@ -106,12 +106,8 @@ make_EHelper(setcc) {
 make_EHelper(not) {
   //TODO();
   rtl_li(&t3,id_dest->val);
-  rtl_li(&t2,0xff);
-  rtl_sext(&t1,&t2,id_dest->width);
+  rtl_not(&t3);
   
-  rtl_xor(&t3,&t3,&t1);
-  printf("0x%08x \t0x%08x \n",t1,t2);
-
   operand_write(id_dest, &t3);
 
   print_asm_template1(not);
