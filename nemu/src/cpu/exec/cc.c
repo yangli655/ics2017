@@ -35,11 +35,17 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_SF(&t1);
       rtl_get_OF(&t3);
       rtl_xor(&t1,&t1,&t3);
-      rtl_and(&t0,&t0,&t1);
-      rtl_mv(dest,&t0);
+      rtl_eq0(&t1,&t0);
+      rtl_mv(dest,&t1);
       break;
     case CC_P: panic("n86 does not have PF");
       break;
+    case CC_NP:
+      rtl_get_SF(&t1);
+      rtl_get_OF(&t3);
+      rtl_xor(&t1,&t1,&t3);
+      rtl_and(&t0,&t0,&t1);
+      rtl_mv(dest,&t0);
     default: panic("should not reach here");
       break;
   }
