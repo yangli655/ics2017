@@ -46,7 +46,7 @@ make_EHelper(xor) {
 make_EHelper(or) {
   //TODO();
   rtl_lr(&t3,id_dest->reg,id_dest->width);
-  rtl_lr(&t2,id_src->reg,id_src->width);
+  rtl_li(&t2,id_src->val);
   rtl_or(&t2,&t2,&t3);
   rtl_sr(id_dest->reg,id_dest->width,&t2);
 
