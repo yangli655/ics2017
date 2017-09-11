@@ -8,7 +8,13 @@ make_EHelper(test) {
   }
   else {
     rtl_lr(&t2,id_dest->reg,id_dest->width);
-    rtl_lr(&t1,id_src->reg,id_src->width);
+    if (id_src->type == OP_TYPE_IMM) {
+      rtl_li(&t1,id_src->imm);
+    }
+    else {
+      rtl_lr(&t1,id_src->reg,id_src->width);
+    }
+    
     rtl_and(&t2,&t1,&t2);
   }
   rtl_li(&t3,0);
