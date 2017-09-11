@@ -50,7 +50,7 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       rtl_get_OF(&t0);
       rtl_xor(&t1,&t0,&t1);
       rtl_neq0(&t1,&t1);
-      rtl_and(&t3,&t1,&t3);
+      rtl_or(&t3,&t1,&t3);
       rtl_mv(dest,&t3);
       break;
     case CC_P: panic("n86 does not have PF");
