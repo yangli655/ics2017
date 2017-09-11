@@ -99,7 +99,7 @@ make_EHelper(shl) {
 }
 
 make_EHelper(shr) {
-  TODO();
+  //TODO();
   // unnecessary to update CF and OF in NEMU
   if (id_src->val == 0){
     rtl_lr(&t3,id_dest->reg,id_dest->width);
