@@ -21,13 +21,17 @@ make_EHelper(test) {
 
 make_EHelper(and) {
   //TODO();
-  rtl_li(&t1,id_src->val);
-  rtl_sext(&t1,&t1,id_src->width);
+  rtl_li(&t3,id_dest->val);
+  rtl_li(&t2,id_src->val);
+  rtl_sext(&t2,&t2,id_src->width);
+  rtl_and(&t2,&t2,&t3);
+  
+  operand_write(id_dest, &t2);
+
   rtl_li(&t3,0);
   rtl_set_CF(&t3);
   rtl_set_OF(&t3);
   rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
-  rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&t1);
 
   print_asm_template2(and);
 }
