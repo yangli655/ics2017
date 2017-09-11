@@ -42,7 +42,12 @@ make_EHelper(popa) {
 }
 
 make_EHelper(leave) {
-  TODO();
+  //TODO();
+  rtl_lr_l(&t3,R_ESP);
+  rtl_lr_l(&t2,R_EBP);
+  rtl_sr_l(R_ESP,&t2);
+  rtl_sr_l(R_EBP,&t3);
+  rtl_pop(&reg_l(R_EBP));
 
   print_asm("leave");
 }
