@@ -44,7 +44,9 @@ make_EHelper(call_rm) {
   //TODO();
   rtl_push(eip);
   decoding.is_jmp = 1;
-  decoding.jmp_eip=id_dest->addr;
+
+  rtl_lm(&decoding.jmp_eip,&id_dest->addr,id_dest->width);
+  //decoding.jmp_eip=id_dest->addr;
 
   print_asm("call *%s", id_dest->str);
 }
