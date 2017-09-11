@@ -144,6 +144,13 @@ static inline void rtl_sext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
   rtl_sari(dest,dest,(4-width)*8);
 }
 
+static inline void rtl_zext(rtlreg_t* dest, const rtlreg_t* src1, int width) {
+  // dest <- signext(src1[(width * 8 - 1) .. 0])
+  //TODO();
+  rtl_shli(dest,src1,(4-width)*8);
+  rtl_shri(dest,dest,(4-width)*8);
+}
+
 static inline void rtl_push(const rtlreg_t* src1) {
   // esp <- esp - 4
   // M[esp] <- src1
