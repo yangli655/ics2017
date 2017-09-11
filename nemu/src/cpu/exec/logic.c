@@ -2,16 +2,15 @@
 
 make_EHelper(test) {
   //TODO();
-  //if (id_src->width == 4)
-  rtl_and(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
+  
+  rtl_lr(&t2,id_dest->reg,id_dest->width);
+  rtl_lr(&t1,id_src->reg,id_src->width);
+  rtl_and(&t2,&t1,&t2);
 
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
   rtl_set_CF(&t3);
-  rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
-  //else {
-    //rtl_and(&reg_w(id_dest->reg),&reg_w(id_dest->reg),&reg_w(id_src->reg));
-  //}
+  rtl_update_ZFSF(&t2,id_dest->width);
 
   print_asm_template2(test);
 }
