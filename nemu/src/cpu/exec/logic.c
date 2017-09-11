@@ -45,11 +45,16 @@ make_EHelper(xor) {
 
 make_EHelper(or) {
   //TODO();
-  rtl_or(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
+  rtl_lr(&t3,id_dest->reg,id_dest->width);
+  rtl_lr(&t2,id_src->reg,id_src->width);
+  rtl_or(&t2,&t2,&t3);
+  rtl_sr(id_dest->reg,id_dest->width,&t2);
+
+  //rtl_or(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
   rtl_set_CF(&t3);
-  rtl_update_ZFSF(&reg_l(id_dest->reg),id_dest->width);
+  rtl_update_ZFSF(&t2,id_dest->width);
 
   print_asm_template2(or);
 }
