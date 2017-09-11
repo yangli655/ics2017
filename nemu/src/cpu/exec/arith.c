@@ -64,7 +64,18 @@ make_EHelper(inc) {
 }
 
 make_EHelper(dec) {
-  TODO();
+  //TODO();
+  rtl_li(&t2,id_dest->val);
+  rtl_subi(&t2,&t2,1);
+  rtl_sr(id_dest->reg,id_dest->width,&t2);
+
+  rtl_update_ZFSF(&t2, id_dest->width);
+  
+  rtl_xori(&t0, &id_dest->val, 1);
+  rtl_xor(&t1, &id_dest->val, &t2);
+  rtl_and(&t0, &t0, &t1);
+  rtl_msb(&t0, &t0, id_dest->width);
+  rtl_set_OF(&t0);
 
   print_asm_template1(dec);
 }
