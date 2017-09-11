@@ -98,15 +98,17 @@ make_EHelper(movsx) {
 }
 
 make_EHelper(movzx) {
+  id_dest->width = 4;
   rtl_zext(&t3,&id_src->val,2);
   operand_write(id_dest, &t3);
   print_asm_template2(movzx);
 }
 
 make_EHelper(movzb) {
+  id_dest->width = 2;
   rtl_zext(&t3,&id_src->val,1);
   operand_write(id_dest, &t3);
-  print_asm_template2(movzx);
+  print_asm_template2(movzb);
 }
 
 make_EHelper(lea) {
