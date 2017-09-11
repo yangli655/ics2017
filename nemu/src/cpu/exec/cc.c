@@ -20,47 +20,47 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
       
       break;
     case CC_E:
-      rtl_get_ZF(&t0);
-      rtl_neq0(&t1,&t0);
-      rtl_mv(dest,&t1);
+      rtl_get_ZF(&t3);
+      rtl_neq0(&t3,&t3);
+      rtl_mv(dest,&t3);
       break;
     case CC_BE:
-      rtl_get_CF(&t0);
+      rtl_get_CF(&t3);
       rtl_get_ZF(&t1);
-      rtl_or(&t0,&t0,&t1);
-      rtl_neq0(&t1,&t0);
-      rtl_mv(dest,&t1);
+      rtl_or(&t3,&t1,&t3);
+      rtl_neq0(&t3,&t3);
+      rtl_mv(dest,&t3);
       break;
     case CC_S:
-      rtl_get_SF(&t0);
-      rtl_neq0(&t1,&t0);
-      rtl_mv(dest,&t1);
+      rtl_get_SF(&t3);
+      rtl_neq0(&t3,&t3);
+      rtl_mv(dest,&t3);
       break;
     case CC_L:
       rtl_get_SF(&t3);
       rtl_get_OF(&t1);
       rtl_xor(&t3,&t1,&t3);
-      rtl_eq0(&t1,&t3);
-      rtl_mv(dest,&t1);
+      rtl_eq0(&t3,&t3);
+      rtl_mv(dest,&t3);
       break;
     case CC_LE:
-      rtl_get_ZF(&t0);
-      rtl_neq0(&t0,&t0);
+      rtl_get_ZF(&t3);
+      rtl_neq0(&t3,&t3);
       rtl_get_SF(&t1);
-      rtl_get_OF(&t3);
-      rtl_xor(&t1,&t1,&t3);
+      rtl_get_OF(&t0);
+      rtl_xor(&t1,&t0,&t1);
       rtl_neq0(&t1,&t1);
-      rtl_and(&t1,&t0,&t1);
-      rtl_mv(dest,&t1);
+      rtl_and(&t3,&t1,&t3);
+      rtl_mv(dest,&t3);
       break;
     case CC_P: panic("n86 does not have PF");
       break;
     case CC_NP:
       rtl_get_SF(&t1);
       rtl_get_OF(&t3);
-      rtl_xor(&t1,&t1,&t3);
-      rtl_and(&t0,&t0,&t1);
-      rtl_mv(dest,&t0);
+      rtl_xor(&t3,&t1,&t3);
+      rtl_eq0(&t3,&t3);
+      rtl_mv(dest,&t3);
       break;
     default: panic("should not reach here");
       break;
