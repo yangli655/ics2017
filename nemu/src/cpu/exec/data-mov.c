@@ -97,6 +97,13 @@ make_EHelper(movsx) {
   print_asm_template2(movsx);
 }
 
+make_EHelper(movsb) {
+  id_dest->width = decoding.is_operand_size_16 ? 2 : 4;
+  rtl_sext(&t2, &id_src->val, 1);
+  operand_write(id_dest, &t2);
+  print_asm_template2(movsx);
+}
+
 make_EHelper(movzx) {
   id_dest->width = decoding.is_operand_size_16 ? 2 : 4;
   rtl_zext(&t3,&id_src->val,2);

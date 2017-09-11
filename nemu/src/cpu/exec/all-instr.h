@@ -28,6 +28,7 @@ make_EHelper(xchg);
 make_EHelper(movzx);
 make_EHelper(movzb);
 make_EHelper(movsx);
+make_EHelper(movsb);
 make_EHelper(setcc);
 make_EHelper(jcc);
 make_EHelper(sar);
