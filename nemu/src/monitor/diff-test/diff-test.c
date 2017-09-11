@@ -187,10 +187,10 @@ void difftest_step(uint32_t eip) {
     diff=true;
     printf("eip\n");
   }
-  /*if((r.eflags&0xac1) != (cpu.EFLAGS&0xac1)){
+  if((r.eflags&0xac1) != (cpu.EFLAGS&0xac1)){
     diff=true;
     printf("------0x%08x-----0x%08x\n",r.eflags&0xac1,cpu.EFLAGS&0xac1);
-  }*/
+  }
   if (diff) {
     printf("***********In QEMU***************\n");
     printf("eax: 0x%08x\t\tecx: 0x%08x\t\tedx: 0x%08x\t\tebx: 0x%08x\n", r.eax, r.ecx, r.edx, r.ebx);
