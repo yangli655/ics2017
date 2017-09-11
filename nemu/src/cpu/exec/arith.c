@@ -41,12 +41,7 @@ make_EHelper(sub) {
 
 make_EHelper(cmp) {
   //TODO();
-  if (id_dest->type == OP_TYPE_MEM) {
-    rtl_lm(&t2,&id_dest->addr,id_dest->width);
-  }
-  else {
-    rtl_sub(&t2, &id_dest->val, &id_src->val);
-  }
+  rtl_sub(&t2, &id_dest->val, &id_src->val);
 
   rtl_update_ZFSF(&t2, id_dest->width);
 
