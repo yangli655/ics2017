@@ -100,14 +100,10 @@ make_EHelper(neg) {
   else {
     rtl_li(&t3,1);
   }
-  
   rtl_set_CF(&t3);
-  rtl_li(&t3,0);
-  //rtl_li(&t2,id_dest->val);
-  rtl_subi(&t2,&t3,id_dest->val);
-  rtl_andi(&t2,&t2,1);
+  id_dest->val=-id_dest->val;
 
-  operand_write(id_dest, &t2);
+  operand_write(id_dest, &id_dest->val);
 
   print_asm_template1(neg);
 }
