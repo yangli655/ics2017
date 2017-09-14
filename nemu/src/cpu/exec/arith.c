@@ -103,7 +103,7 @@ make_EHelper(neg) {
   rtl_set_CF(&t3);
   rtl_li(&t2,id_dest->val);
   rtl_not(&t2);
-  rtl_andi(&t2,&t2,1);
+  //rtl_andi(&t2,&t2,1);
 
   operand_write(id_dest, &t2);
 
