@@ -126,18 +126,18 @@ make_EHelper(lea) {
 
 make_EHelper(xchg) {
   //TODO()
-  if (id_dest->width == 2) {
+  /*if (id_dest->width == 2) {
     rtl_lr_w(&t3,id_dest->reg);
     rtl_lr_w(&t2,R_AX);
     rtl_sr_w(R_AX,&t3);
     rtl_sr_w(id_dest->reg,&t2);
     print_asm(str(xchg) "%c %%ax,%s", suffix_char(id_dest->width), id_dest->str);
   }
-  else {
+  else {*/
     rtl_lr_l(&t3,id_dest->reg);
     rtl_lr_l(&t2,R_EAX);
     rtl_sr_l(R_EAX,&t3);
     rtl_sr_l(id_dest->reg,&t2);
     print_asm(str(xchg) "%c %%eax,%s", suffix_char(id_dest->width), id_dest->str);
-  }
+  //}
 }
