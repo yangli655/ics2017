@@ -94,12 +94,7 @@ make_EHelper(dec) {
 
 make_EHelper(neg) {
   //TODO();
-  if (id_dest->val == 0) {
-    rtl_li(&t3,0);
-  }
-  else {
-    rtl_li(&t3,1);
-  }
+  rtl_neq0(&t3,&id_dest->val);
   rtl_set_CF(&t3);
   id_dest->val=-id_dest->val;
 
