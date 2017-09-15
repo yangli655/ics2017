@@ -80,7 +80,10 @@ make_EHelper(sar) {
   rtl_lr(&t3,id_dest->reg,id_dest->width);
   rtl_sext(&t3,&t3,id_dest->width);
   rtl_sari(&t3,&t3,id_src->val);
-  rtl_sr(id_dest->reg,id_dest->width,&t3);
+
+  operand_write(id_dest, &t3);
+
+  //rtl_sr(id_dest->reg,id_dest->width,&t3);
   rtl_update_ZFSF(&t3,id_dest->width);
 
   print_asm_template2(sar);
