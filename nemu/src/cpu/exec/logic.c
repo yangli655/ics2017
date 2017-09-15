@@ -17,7 +17,7 @@ make_EHelper(test) {
     rtl_andi(&t2,&t2,id_dest->val);
   }
   else {
-    rtl_li(&t2,id_dest->val);
+    rtl_lr(&t2,id_dest->reg,id_dest->width);
     if (id_src->type == OP_TYPE_IMM) {
       rtl_li(&t1,id_src->imm);
     }
