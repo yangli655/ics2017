@@ -79,7 +79,6 @@ make_EHelper(dec) {
   //TODO();
   rtl_li(&t2,id_dest->val);
   rtl_subi(&t2,&t2,1);
-  //rtl_sr(id_dest->reg,id_dest->width,&t2);
 
   operand_write(id_dest, &t2);
 
