@@ -30,7 +30,7 @@ make_EHelper(and) {
   rtl_li(&t3,id_dest->val);
   rtl_li(&t2,id_src->val);
   rtl_sext(&t2,&t2,id_src->width);
-  rtl_sext(&t3,&t3,id_dest->width);
+  //tl_sext(&t3,&t3,id_dest->width);
   rtl_and(&t2,&t2,&t3);
   
   operand_write(id_dest, &t2);
