@@ -75,6 +75,7 @@ make_EHelper(or) {
 make_EHelper(sar) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
+  printf("0x%08x\t%d\n",reg_l(id_dest->reg),id_dest->reg);
   rtl_lr(&t2,id_dest->reg,id_dest->width);
   rtl_sari(&t3,&t2,id_src->val);
   rtl_sr(id_dest->reg,id_dest->width,&t3);
@@ -87,6 +88,7 @@ make_EHelper(shl) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
   if (id_src->val == 0){
+    
     rtl_lr(&t3,id_dest->reg,id_dest->width);
     rtl_update_ZFSF(&t3,id_dest->width);
     rtl_li(&t2,1);
