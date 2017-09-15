@@ -2,10 +2,31 @@
 
 make_EHelper(test) {
   //TODO();
-  rtl_li(&t2,id_dest->val);
+  /*rtl_li(&t2,id_dest->val);
   rtl_li(&t1,id_src->val);  
   rtl_and(&t2,&t1,&t2);
 
+  rtl_li(&t3,0);
+  rtl_set_OF(&t3);
+  rtl_set_CF(&t3);
+  rtl_update_ZFSF(&t2,id_dest->width);*/
+
+
+  if (id_dest->type == OP_TYPE_MEM) {
+    rtl_lr(&t2,id_src->reg,id_src->width);
+    rtl_andi(&t2,&t2,id_dest->val);
+  }
+  else {
+    rtl_lr(&t2,id_dest->reg,id_dest->width);
+    if (id_src->type == OP_TYPE_IMM) {
+      rtl_li(&t1,id_src->imm);
+    }
+    else {
+      rtl_lr(&t1,id_src->reg,id_src->width);
+    }
+    
+    rtl_and(&t2,&t1,&t2);
+  }
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
   rtl_set_CF(&t3);
