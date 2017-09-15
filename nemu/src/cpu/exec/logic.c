@@ -76,7 +76,6 @@ make_EHelper(or) {
 make_EHelper(sar) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
-  //printf("0x%08x\t%d\n",reg_l(id_dest->reg),id_dest->reg);
   //rtl_lr(&t3,id_dest->reg,id_dest->width);
   rtl_li(&t3,id_dest->val);
   rtl_sext(&t3,&t3,id_dest->width);
