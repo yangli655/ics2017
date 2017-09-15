@@ -110,22 +110,19 @@ make_EHelper(shl) {
 make_EHelper(shr) {
   //TODO();
   // unnecessary to update CF and OF in NEMU
-  if (id_src->val == 0){
+  /*if (id_src->val == 0){
     rtl_li(&t3,id_dest->val);
     //rtl_lr(&t3,id_dest->reg,id_dest->width);
     rtl_update_ZFSF(&t3,id_dest->width);
     rtl_li(&t2,1);
     rtl_set_ZF(&t2);
   }
-  else {
+  else {*/
     rtl_li(&t3,id_dest->val);
-    //rtl_lr(&t3,id_dest->reg,id_dest->width);
     rtl_shri(&t3,&t3,id_src->val);
-
     operand_write(id_dest, &t3);
-    //rtl_sr(id_dest->reg,id_dest->width,&t3);
     rtl_update_ZFSF(&t3,id_dest->width);
-  }
+  //}
 
   print_asm_template2(shr);
 }
