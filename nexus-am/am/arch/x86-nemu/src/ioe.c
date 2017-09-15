@@ -9,9 +9,7 @@ void _ioe_init() {
 }
 
 unsigned long _uptime() {
-  uint32_t data=0;
-  outl(RTC_PORT, data);
-  return data;
+  return inl(RTC_PORT)-boot_time;
 }
 
 uint32_t* const fb = (uint32_t *)0x40000;
