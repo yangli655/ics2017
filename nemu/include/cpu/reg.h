@@ -53,8 +53,8 @@ typedef struct {
 extern CPU_state cpu;
 
 static inline int check_reg_index(int index) {
-  if(index < 0 && index >= 8)  
-    printf("%d\n",cpu.eip);
+  if(index < 0 || index >= 8)  
+    printf("%d\n\n\n",cpu.eip);
   assert(index >= 0 && index < 8);
   return index;
 }
