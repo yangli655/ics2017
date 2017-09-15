@@ -54,7 +54,7 @@ extern CPU_state cpu;
 
 static inline int check_reg_index(int index) {
   if(index < 0 || index >= 8)  
-    printf("%d\n\n\n",cpu.eip);
+    printf("%d\t0x%08x\n\n\n",cpu.eip,cpu.eip);
   assert(index >= 0 && index < 8);
   return index;
 }
