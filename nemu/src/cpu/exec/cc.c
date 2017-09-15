@@ -15,6 +15,9 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
   // dest <- ( cc is satisfied ? 1 : 0)
   switch (subcode & 0xe) {
     case CC_O:
+      rtl_get_OF(&t3);
+      rtl_neq0(&t3,&t3);
+      rtl_mv(dest,&t3);
       break;
     case CC_B:
       rtl_get_CF(&t3);
