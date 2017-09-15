@@ -17,7 +17,9 @@ void rtl_setcc(rtlreg_t* dest, uint8_t subcode) {
     case CC_O:
       break;
     case CC_B:
-      
+      rtl_get_CF(&t3);
+      rtl_neq0(&t3,&t3);
+      rtl_mv(dest,&t3);
       break;
     case CC_E:
       rtl_get_ZF(&t3);
