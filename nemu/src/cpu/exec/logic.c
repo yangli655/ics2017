@@ -34,9 +34,11 @@ make_EHelper(and) {
 make_EHelper(xor) {
   //TODO();
   rtl_li(&t3,id_src->val);
-  rtl_lr(&t2,id_dest->reg,id_dest->width);
+  //rtl_lr(&t2,id_dest->reg,id_dest->width);
+  rtl_li(&t2,id_dest->val);
   rtl_xor(&t2,&t2,&t3);
-  rtl_sr(id_dest->reg,id_dest->width,&t2);
+  //rtl_sr(id_dest->reg,id_dest->width,&t2);
+  operand_write(id_dest, &t2);
   
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
@@ -49,14 +51,11 @@ make_EHelper(xor) {
 make_EHelper(or) {
   //TODO();
   rtl_li(&t3,id_dest->val);
-  //rtl_lr(&t3,id_dest->reg,id_dest->width);
   rtl_li(&t2,id_src->val);
   rtl_or(&t2,&t2,&t3);
 
   operand_write(id_dest, &t2);
-  //rtl_sr(id_dest->reg,id_dest->width,&t2);
-
-
+  
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
   rtl_set_CF(&t3);
