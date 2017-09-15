@@ -51,3 +51,4 @@ make_EHelper(in);
 make_EHelper(out);
 
 make_EHelper(neg);
+make_EHelper(rol);

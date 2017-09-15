@@ -2,16 +2,10 @@
 
 make_EHelper(test) {
   //TODO();
-  //if (id_dest->type == OP_TYPE_MEM) {
-    //rtl_lr(&t2,id_src->reg,id_src->width);
-    //rtl_andi(&t2,&t2,id_dest->val);
-  //}
-  //else {
-    rtl_li(&t2,id_dest->val);
-    rtl_li(&t1,id_src->val);
-    
-    rtl_and(&t2,&t1,&t2);
-  //}
+  rtl_li(&t2,id_dest->val);
+  rtl_li(&t1,id_src->val);  
+  rtl_and(&t2,&t1,&t2);
+
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
   rtl_set_CF(&t3);
@@ -25,7 +19,6 @@ make_EHelper(and) {
   rtl_li(&t3,id_dest->val);
   rtl_li(&t2,id_src->val);
   rtl_sext(&t2,&t2,id_src->width);
-  //rtl_sext(&t3,&t3,id_dest->width);
   rtl_and(&t2,&t2,&t3);
   
   operand_write(id_dest, &t2);
@@ -44,7 +37,7 @@ make_EHelper(xor) {
   rtl_lr(&t2,id_dest->reg,id_dest->width);
   rtl_xor(&t2,&t2,&t3);
   rtl_sr(id_dest->reg,id_dest->width,&t2);
-  //rtl_xor(&reg_l(id_dest->reg),&reg_l(id_dest->reg),&reg_l(id_src->reg));
+  
   rtl_li(&t3,0);
   rtl_set_OF(&t3);
   rtl_set_CF(&t3);
@@ -116,6 +109,18 @@ make_EHelper(setcc) {
 make_EHelper(not) {
   //TODO();
   rtl_li(&t3,id_dest->val);
+  rtl_not(&t3);
+  
+  operand_write(id_dest, &t3);
+
+  print_asm_template1(not);
+}
+
+make_EHelper(rol) {
+  //TODO();
+  rtl_li(&t3,id_dest->val);
+
+  //rtl_
   rtl_not(&t3);
   
   operand_write(id_dest, &t3);
