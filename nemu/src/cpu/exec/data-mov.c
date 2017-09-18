@@ -131,10 +131,10 @@ make_EHelper(lea) {
 
 make_EHelper(xchg) {
   //TODO()
-  rtl_lr_l(&t3,id_dest->reg);
-  rtl_lr_l(&t2,R_EAX);
-  rtl_sr_l(R_EAX,&t3);
-  rtl_sr_l(id_dest->reg,&t2);
+  rtl_lr(&t3,id_dest->reg,id_dest->width);
+  rtl_lr(&t2,R_EAX,id_dest->width);
+  rtl_sr(R_EAX,id_dest->width,&t3);
+  rtl_sr(id_dest->reg,id_dest->width,&t2);
   
   print_asm(str(xchg) "%c %%eax,%s", suffix_char(id_dest->width), id_dest->str);
 }
