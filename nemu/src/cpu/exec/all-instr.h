@@ -38,6 +38,7 @@ make_EHelper(jmp);
 make_EHelper(jmp_rm);
 make_EHelper(div);
 make_EHelper(idiv);
+make_EHelper(nop);
 
 make_EHelper(mul);
 make_EHelper(imul1);
