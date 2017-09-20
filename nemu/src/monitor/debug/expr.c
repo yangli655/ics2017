@@ -7,11 +7,7 @@
 #include <regex.h>
 
 enum {
-<<<<<<< HEAD
   TK_NOTYPE = 256, TK_EQ, TK_NEQ, TK_AND, TK_OR, TK_NOT, TK_NUM, TK_HEX, TK_LP, TK_RP, TK_REG, TK_MIN, TK_ADR, TK_BE, TK_LE, TK_L, TK_B
-=======
-  TK_NOTYPE = 256, TK_EQ, TK_NEQ, TK_AND, TK_OR, TK_NOT, TK_NUM, TK_HEX, TK_LP, TK_RP, TK_REG, TK_MIN, TK_ADR, TK_BE, TK_LE, TK_B, TK_L
->>>>>>> pa2
   /* TODO: Add more token types */
 };
 
@@ -33,11 +29,7 @@ static struct rule {
   {">=", TK_BE, 6},        
   {"<=", TK_LE, 6},        
   {"<", TK_L, 6},          
-<<<<<<< HEAD
   {">", TK_B, 6},          
-=======
-  {">", TK_B, 6},      
->>>>>>> pa2
   {"==", TK_EQ, 7},        // equal
   {"!=", TK_NEQ, 7},       // not equal
   {"[&]{2,2}", TK_AND, 11},      // and
