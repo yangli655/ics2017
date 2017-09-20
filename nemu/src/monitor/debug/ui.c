@@ -115,7 +115,7 @@ static int cmd_info(char *args) {
     if (!strcmp(args, "r")) {
       printf("eax: 0x%08x\t\tecx: 0x%08x\t\tedx: 0x%08x\t\tebx: 0x%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
       printf("esp: 0x%08x\t\tebp: 0x%08x\t\tesi: 0x%08x\t\tedi: 0x%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
-      printf("eip: 0x%08x\n", cpu.eip);
+      printf("eip: 0x%08x\t\teflags: 0x%08x\n", cpu.eip,cpu.EFLAGS);
     }
     else if (!strcmp(args, "w")) {
       print_wp();
@@ -146,7 +146,7 @@ static int cmd_p(char *args) {
 
 static int cmd_x(char *args) {
   int num,i;
-  char EXPR[32];
+  char EXPR[64];
   bool flag;
   if (args == NULL) {
     printf("Instruction requires parameters\n");

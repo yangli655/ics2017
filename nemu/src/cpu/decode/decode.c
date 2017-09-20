@@ -9,7 +9,6 @@ const rtlreg_t tzero = 0;
 #define make_DopHelper(name) void concat(decode_op_, name) (vaddr_t *eip, Operand *op, bool load_val)
 
 /* Refer to Appendix A in i386 manual for the explanations of these abbreviations */
-
 /* Ib, Iv */
 static inline make_DopHelper(I) {
   /* eip here is pointing to the immediate */
@@ -29,18 +28,20 @@ static inline make_DopHelper(I) {
 /* sign immediate */
 static inline make_DopHelper(SI) {
   assert(op->width == 1 || op->width == 4);
-
   op->type = OP_TYPE_IMM;
 
   /* TODO: Use instr_fetch() to read `op->width' bytes of memory
    * pointed by `eip'. Interpret the result as a signed immediate,
    * and assign it to op->simm.
-   *
-   op->simm = ???
+   * op->simm = ???
    */
-  TODO();
-
-  rtl_li(&op->val, op->simm);
+  //TODO();
+  t3 = instr_fetch(eip, op->width);
+  rtl_sext(&t3,&t3,op->width);
+  op->simm=t3;
+  if (load_val) {
+    rtl_li(&op->val, op->simm);
+  }
 
 #ifdef DEBUG
   snprintf(op->str, OP_STR_SIZE, "$0x%x", op->simm);

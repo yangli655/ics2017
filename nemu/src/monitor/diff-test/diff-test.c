@@ -31,6 +31,7 @@ void diff_test_skip_nemu() { is_skip_nemu = true; }
     regs.esi = cpu.esi; \
     regs.edi = cpu.edi; \
     regs.eip = cpu.eip; \
+    regs.eflags = cpu.EFLAGS; \
   } while (0)
 
 static uint8_t mbr[] = {
@@ -149,9 +150,52 @@ void difftest_step(uint32_t eip) {
 
   // TODO: Check the registers state with QEMU.
   // Set `diff` as `true` if they are not the same.
-  TODO();
-
+  
+  if(r.eax!=cpu.eax){
+    diff=true;
+    printf("eax\n");
+  }
+  if(r.ecx!=cpu.ecx){
+    diff=true;
+    printf("ecx\n");
+  }
+  if(r.edx!=cpu.edx){
+    diff=true;
+    printf("edx\n");
+  }
+  if(r.ebx!=cpu.ebx){
+    diff=true;
+    printf("ebx\n");
+  }
+  if(r.esp!=cpu.esp){
+    diff=true;
+    printf("esp\n");
+  }
+  if(r.ebp!=cpu.ebp){
+    diff=true;
+    printf("ebp\n");
+  }
+  if(r.esi!=cpu.esi){
+    diff=true;
+    printf("esi\n");
+  }
+  if(r.edi!=cpu.edi){
+    diff=true;
+    printf("edi\n");
+  }
+  if(r.eip!=cpu.eip){
+    diff=true;
+    printf("eip\n");
+  }
+  /*if((r.eflags&0xac1) != (cpu.EFLAGS&0xac1)){
+    diff=true;
+    printf("------0x%08x-----0x%08x\n",r.eflags&0xac1,cpu.EFLAGS&0xac1);
+  }*/
   if (diff) {
+    printf("***********In QEMU***************\n");
+    printf("eax: 0x%08x\t\tecx: 0x%08x\t\tedx: 0x%08x\t\tebx: 0x%08x\n", r.eax, r.ecx, r.edx, r.ebx);
+    printf("esp: 0x%08x\t\tebp: 0x%08x\t\tesi: 0x%08x\t\tedi: 0x%08x\n", r.esp, r.ebp, r.esi, r.edi);
+    printf("eip: 0x%08x\t\teflags: 0x%08x\n", r.eip,r.eflags);
     nemu_state = NEMU_END;
   }
 }

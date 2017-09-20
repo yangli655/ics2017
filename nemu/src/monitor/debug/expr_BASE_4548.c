@@ -7,11 +7,7 @@
 #include <regex.h>
 
 enum {
-<<<<<<< HEAD
-  TK_NOTYPE = 256, TK_EQ, TK_NEQ, TK_AND, TK_OR, TK_NOT, TK_NUM, TK_HEX, TK_LP, TK_RP, TK_REG, TK_MIN, TK_ADR, TK_BE, TK_LE, TK_L, TK_B
-=======
-  TK_NOTYPE = 256, TK_EQ, TK_NEQ, TK_AND, TK_OR, TK_NOT, TK_NUM, TK_HEX, TK_LP, TK_RP, TK_REG, TK_MIN, TK_ADR, TK_BE, TK_LE, TK_B, TK_L
->>>>>>> pa2
+  TK_NOTYPE = 256, TK_EQ, TK_NEQ, TK_AND, TK_OR, TK_NOT, TK_NUM, TK_HEX, TK_LP, TK_RP, TK_REG, TK_MIN, TK_ADR
   /* TODO: Add more token types */
 };
 
@@ -30,14 +26,6 @@ static struct rule {
   {"\\-", '-', 4},         // minus
   {"\\*", '*', 3},         // star
   {"\\/", '/', 3},         // div
-  {">=", TK_BE, 6},        
-  {"<=", TK_LE, 6},        
-  {"<", TK_L, 6},          
-<<<<<<< HEAD
-  {">", TK_B, 6},          
-=======
-  {">", TK_B, 6},      
->>>>>>> pa2
   {"==", TK_EQ, 7},        // equal
   {"!=", TK_NEQ, 7},       // not equal
   {"[&]{2,2}", TK_AND, 11},      // and
@@ -127,6 +115,7 @@ static bool make_token(char *e) {
             }
             strcpy(tokens[nr_token].str,"*");
             break;
+          
           default:
             tokens[nr_token].priority=rules[i].priority;
             tokens[nr_token].type=rules[i].token_type;
@@ -237,10 +226,6 @@ static int eval(int p, int q) {
       case TK_OR: return val1 || val2;
       case TK_NOT: return !val1;
       case TK_MIN: return -val1;
-      case TK_B: return val1 > val2;
-      case TK_L: return val1 < val2;
-      case TK_BE: return val1 > val2 || val1 == val2;
-      case TK_LE: return val1 < val2 || val1 == val2;
       case TK_ADR: return vaddr_read(val1, 4);
       default: assert(0);
 		}
