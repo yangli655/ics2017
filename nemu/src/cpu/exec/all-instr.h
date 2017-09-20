@@ -24,7 +24,6 @@ make_EHelper(not);
 make_EHelper(test);
 make_EHelper(cmp);
 make_EHelper(lea);
-make_EHelper(xchg);
 make_EHelper(movzx);
 make_EHelper(movzb);
 make_EHelper(movsx);
