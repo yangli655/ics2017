@@ -121,7 +121,7 @@ make_EHelper(rol) {
   rtl_li(&t3,id_dest->val);
 
   rtl_shli(&t2,&t3,id_src->val);
-  rtl_shri(&t3,&t3,id_dest->width*4-id_src->val);
+  rtl_sari(&t3,&t3,id_dest->width*4-id_src->val);
   rtl_and(&t3,&t2,&t3);
   
   operand_write(id_dest, &t3);
