@@ -116,7 +116,6 @@ static int cmd_info(char *args) {
       printf("eax: 0x%08x\t\tecx: 0x%08x\t\tedx: 0x%08x\t\tebx: 0x%08x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx);
       printf("esp: 0x%08x\t\tebp: 0x%08x\t\tesi: 0x%08x\t\tedi: 0x%08x\n", cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
       printf("eip: 0x%08x\t\teflags: 0x%08x\n", cpu.eip,cpu.EFLAGS);
-      printf("T:\t0x%08x\n",cpu.t);
     }
     else if (!strcmp(args, "w")) {
       print_wp();
