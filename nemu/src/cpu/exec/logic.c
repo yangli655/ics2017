@@ -123,9 +123,8 @@ make_EHelper(rol) {
   rtl_shri(&t2,&t3,id_dest->width*8-id_src->val);
   rtl_shli(&t3,&t3,id_src->val);
   rtl_or(&t3,&t2,&t3);
-  
+
   operand_write(id_dest, &t3);
   
-
   print_asm_template1(not);
 }
