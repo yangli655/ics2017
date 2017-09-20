@@ -121,10 +121,10 @@ make_EHelper(rol) {
 
   /*temp=x>>(y-z);
   x=x<<z;
-  x=x | temp;
+  x=x | temp;*/
 
 
-  rtl_li(&t3,id_dest->val);*/
+  rtl_li(&t3,id_dest->val);
 
   rtl_shri(&t2,&t3,id_dest->width*4-id_src->val);
   rtl_shli(&t3,&t3,id_src->val);
