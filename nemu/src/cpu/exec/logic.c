@@ -120,8 +120,8 @@ make_EHelper(rol) {
   //TODO();
   rtl_li(&t3,id_dest->val);
 
-  rtl_sari(&t2,&t3,id_dest->width*8-id_src->val);
-  rtl_sali(&t3,&t3,id_src->val);
+  rtl_shri(&t2,&t3,id_dest->width*8-id_src->val);
+  rtl_shli(&t3,&t3,id_src->val);
   rtl_or(&t3,&t2,&t3);
   
   operand_write(id_dest, &t3);
