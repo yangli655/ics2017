@@ -118,15 +118,9 @@ make_EHelper(not) {
 
 make_EHelper(rol) {
   //TODO();
-
-  /*temp=x>>(y-z);
-  x=x<<z;
-  x=x | temp;*/
-
-
   rtl_li(&t3,id_dest->val);
 
-  rtl_sari(&t2,&t3,id_dest->width*4-id_src->val);
+  rtl_sari(&t2,&t3,id_dest->width*8-id_src->val);
   rtl_sali(&t3,&t3,id_src->val);
   rtl_or(&t3,&t2,&t3);
   
