@@ -129,7 +129,7 @@ make_EHelper(lea) {
   print_asm_template2(lea);
 }
 
-make_EHelper(xchg) {
+/*make_EHelper(xchg) {
   //TODO()
   rtl_lr(&t3,id_dest->reg,id_dest->width);
   rtl_lr(&t2,R_EAX,id_dest->width);
@@ -137,4 +137,4 @@ make_EHelper(xchg) {
   rtl_sr(id_dest->reg,id_dest->width,&t2);
   
   print_asm(str(xchg) "%c %%eax,%s", suffix_char(id_dest->width), id_dest->str);
-}
+}*/
